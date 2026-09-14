@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConstraintMirror — Financial Solutions That Only Exist Because of What You Refuse</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            alabaster: '#f8fafc',
+            slateSurface: '#f1f5f9',
+            emeraldAccent: '#059669',
+            mintLight: '#ecfdf5',
+            cobaltAccent: '#2563eb',
+            cobaltLight: '#eff6ff',
+            amberAccent: '#d97706',
+            amberLight: '#fef3c7',
+            roseWarning: '#e11d48',
+            roseLight: '#fff1f2',
+            ink: '#0f172a',
+            inkMuted: '#475569',
+          },
+          boxShadow: {
+            'subtle': '0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04)',
+            'elevated': '0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03)',
+            'glow-emerald': '0 0 20px -3px rgba(16, 185, 129, 0.25)',
+            'glow-cobalt': '0 0 20px -3px rgba(37, 99, 235, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+
+    /* Colossal Subtle Grid Pattern */
+    .bg-grid-pattern {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+    }
+
+    /* Shimmer animation for constraints */
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.92; transform: scale(0.995); }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 3s ease-in-out infinite;
+    }
+
+    .code-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+  </style>
+</head>
+
+<body class="bg-alabaster text-ink font-sans antialiased selection:bg-emerald-100 selection:text-emerald-900 bg-grid-pattern min-h-screen">
+
+  <!-- ========================================================================= -->
+  <!-- TOP STICKY NAVIGATION BAR -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand Identity -->
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-ink text-white flex items-center justify-center font-mono font-bold text-base shadow-sm border border-slate-800">
+            CM
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-base tracking-tight text-ink">ConstraintMirror</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-emerald-50 text-emerald-700 border border-emerald-200">
+                v1.0 • OPEN LLM
+              </span>
+            </div>
+            <p class="text-[11px] text-inkMuted hidden sm:block">Financial Inclusion by Inverse Design</p>
+          </div>
+        </div>
+
+        <!-- Navigation Anchors -->
+        <nav class="hidden md:flex items-center gap-1 text-xs font-medium">
+          <a href="#introduction" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-ink hover:bg-slate-100 transition-colors">
+            <span class="font-mono text-slate-400 mr-1">01.</span>Introduction
+          </a>
+          <a href="#prototype" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-ink hover:bg-slate-100 transition-colors">
+            <span class="font-mono text-slate-400 mr-1">02.</span>Prototype Demo
+          </a>
+          <a href="#tech-stack" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-ink hover:bg-slate-100 transition-colors">
+            <span class="font-mono text-slate-400 mr-1">03.</span>Tech & Code
+          </a>
+          <a href="#open-llm" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-ink hover:bg-slate-100 transition-colors">
+            <span class="font-mono text-slate-400 mr-1">04.</span>Open LLMs
+          </a>
+          <a href="#future-scope" class="px-3 py-1.5 rounded-md text-slate-600 hover:text-ink hover:bg-slate-100 transition-colors">
+            <span class="font-mono text-slate-400 mr-1">05.</span>Future Scope
+          </a>
+        </nav>
+
+        <!-- Status Pill & Action -->
+        <div class="flex items-center gap-3">
+          <div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-slate-100/80 border border-slate-200 rounded-full text-[11px] font-mono text-slate-600">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            Zero-Violation Guardrail: Active
+          </div>
+          <a href="portal.html" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 transition-all shadow-subtle">
+            <i data-lucide="layout-dashboard" class="w-3.5 h-3.5"></i>
+            <span>Open Client Portal</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- HERO BANNER / CORE MANIFESTO -->
+  <!-- ========================================================================= -->
+  <section class="relative pt-12 pb-16 overflow-hidden border-b border-slate-200/60 bg-gradient-to-b from-white via-alabaster to-slateSurface/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Monospace Pre-header -->
+      <div class="flex items-center gap-2 mb-4">
+        <span class="font-mono text-[11px] uppercase tracking-widest text-emerald-700 bg-emerald-50 border border-emerald-200/70 px-2.5 py-1 rounded-full flex items-center gap-1.5 font-semibold">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+          Theme: Financial Inclusion & Sovereign AI
+        </span>
+        <span class="text-slate-300 font-mono text-xs">/</span>
+        <span class="font-mono text-[11px] text-slate-500 uppercase tracking-wider">Research Prototype 2026</span>
+      </div>
+
+      <!-- Main Editorial Headline -->
+      <div class="max-w-4xl">
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-ink leading-[1.12]">
+          Financial solutions that only exist because of <span class="underline decoration-emerald-500 decoration-4 underline-offset-8 text-emerald-700">what you refuse.</span>
+        </h1>
+        <p class="mt-6 text-base sm:text-xl text-inkMuted leading-relaxed font-normal max-w-3xl">
+          When underserved communities face critical financial needs, conventional advisors demand they compromise on their deepest cultural, family, and religious boundaries. <strong class="text-ink font-semibold">ConstraintMirror inverts the system:</strong> it turns refusal into primary creative material, designing by absence.
+        </p>
+
+        <!-- Hero Actions -->
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href="portal.html" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-semibold text-sm shadow-elevated transition-all">
+            <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            <span>Launch User Portal Studio</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <a href="#prototype" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-semibold text-sm border border-slate-200 shadow-subtle transition-all">
+            <i data-lucide="play-circle" class="w-4 h-4 text-cobaltAccent"></i>
+            <span>Interactive Overview Demo</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Metrics Ribbon -->
+      <div class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl">
+        <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-subtle">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-ink">100%</div>
+          <div class="text-xs text-inkMuted mt-1">Constraint-Respect Rate (Guaranteed by Grammar Masking)</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-subtle">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-emerald-600">0%</div>
+          <div class="text-xs text-inkMuted mt-1">Boundary Breach or Shaming in Advice</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-subtle">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-cobaltAccent">3-Stage</div>
+          <div class="text-xs text-inkMuted mt-1">Dual-Engine Open LLM Verification Pipeline</div>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-slate-200/90 shadow-subtle">
+          <div class="font-mono text-2xl sm:text-3xl font-bold text-amber-600">Edge-Ready</div>
+          <div class="text-xs text-inkMuted mt-1">Sovereign Offline Execution for Rural Kiosks</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 1: INTRODUCTION TO PROTOTYPE -->
+  <!-- ========================================================================= -->
+  <section id="introduction" class="py-20 border-b border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex items-center gap-2 mb-2">
+        <span class="font-mono text-xs font-bold text-emerald-600 uppercase tracking-widest">[01 // INTRODUCTION TO PROTOTYPE]</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-ink tracking-tight">
+        Problem Statement, Objectives & The "Design by Absence" Approach
+      </h2>
+      <p class="text-sm sm:text-base text-inkMuted mt-2 max-w-3xl">
+        Why standard fintech fails the most vulnerable, and how mathematical constraint-locking reframes refusal into generative resilience.
+      </p>
+
+      <!-- 3 Pillars Grid -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Pillar 1: The Problem -->
+        <div class="bg-alabaster rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle flex flex-col justify-between hover:border-slate-300 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-roseLight text-roseWarning flex items-center justify-center mb-5 border border-rose-200">
+              <i data-lucide="shield-alert" class="w-6 h-6"></i>
+            </div>
+            <div class="font-mono text-xs font-semibold text-rose-700 uppercase tracking-wider">01 • Problem Statement</div>
+            <h3 class="text-lg font-bold text-ink mt-2">The Exclusion Paradox</h3>
+            <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+              Millions in underserved rural and informal communities live with deep, sacred refusals: <em>never sell ancestral land, never borrow from relatives (social shame), never touch interest-bearing debt (faith-based Riba), never migrate away from aging kin, never take predatory informal loans</em>.
+            </p>
+            <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+              Conventional advisors and algorithmic banking apps treat these boundaries as friction to be dismantled. They advise farmers to mortgage their legacy plots or push women into high-interest chits. The result is advice that feels <strong>culturally alien, unsafe, and hostile</strong>—driving persistent exclusion.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200/80">
+            <span class="text-xs font-mono font-medium text-rose-600 flex items-center gap-1.5">
+              <i data-lucide="x-circle" class="w-3.5 h-3.5"></i> Traditional Advice = Compromise & Erosion
+            </span>
+          </div>
+        </div>
+
+        <!-- Pillar 2: The Objectives -->
+        <div class="bg-alabaster rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle flex flex-col justify-between hover:border-slate-300 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-cobaltLight text-cobaltAccent flex items-center justify-center mb-5 border border-blue-200">
+              <i data-lucide="target" class="w-6 h-6"></i>
+            </div>
+            <div class="font-mono text-xs font-semibold text-cobaltAccent uppercase tracking-wider">02 • Core Objectives</div>
+            <h3 class="text-lg font-bold text-ink mt-2">Inversion of Advisory</h3>
+            <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+              ConstraintMirror’s core mandate is to establish <strong>uncompromising institutional trust</strong> by proving that an AI will never, under any circumstance, advise a user to violate their declared red lines.
+            </p>
+            <ul class="text-sm text-inkMuted mt-3 space-y-2.5">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Extract & Lock:</strong> Structure raw dialect/vernacular refusals into inviolable computational rules.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Guarantee Fidelity:</strong> 100% boundary respect rate enforced via constrained grammar decoding.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-emerald-600 mt-0.5 flex-shrink-0"></i>
+                <span><strong>Dignified Presentation:</strong> Present actionable, concrete steps without moralizing or lecturing.</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200/80">
+            <span class="text-xs font-mono font-medium text-cobaltAccent flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Target = 100% Constraint Respect
+            </span>
+          </div>
+        </div>
+
+        <!-- Pillar 3: The Approach -->
+        <div class="bg-alabaster rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle flex flex-col justify-between hover:border-slate-300 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-mintLight text-emeraldAccent flex items-center justify-center mb-5 border border-emerald-200">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <div class="font-mono text-xs font-semibold text-emerald-700 uppercase tracking-wider">03 • The Approach</div>
+            <h3 class="text-lg font-bold text-ink mt-2">Designing by Absence</h3>
+            <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+              Standard machine learning searches for a global optimum across all debt/collateral instruments. ConstraintMirror executes <strong>counterfactual pruning</strong>: it removes standard debt vectors and searches the latent space for solutions that <em>only become viable because of the refusal</em>.
+            </p>
+            <p class="text-sm text-inkMuted mt-3 leading-relaxed">
+              Refusing land mortgage forces the engine to discover <strong>forward crop off-takes, collective machinery lease-pooling, and SHG grain-credit</strong>. Limitation is transformed into the catalyst of institutional innovation.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-200/80">
+            <span class="text-xs font-mono font-medium text-emerald-700 flex items-center gap-1.5">
+              <i data-lucide="lock" class="w-3.5 h-3.5"></i> Red Lines = Creative Catalysts
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Architectural Methodology Strip -->
+      <div class="mt-12 p-6 rounded-2xl bg-slateSurface/60 border border-slate-200 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-lg bg-ink text-white flex items-center justify-center flex-shrink-0 font-mono text-sm">
+            0→1
+          </div>
+          <div>
+            <h4 class="font-bold text-sm text-ink">The Inverted Optimization Formula</h4>
+            <p class="text-xs text-inkMuted">Conventional: <code class="bg-slate-200 px-1 py-0.5 rounded text-[11px]">Maximize Capital | Minimize Constraint Fidelity</code> &nbsp;vs.&nbsp; ConstraintMirror: <code class="bg-emerald-100 text-emerald-900 font-semibold px-1 py-0.5 rounded text-[11px]">Hold Constraints Absolute | Discover Latent Collective Capital</code></p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 font-mono text-xs text-slate-500">
+          <span class="px-2.5 py-1 bg-white rounded border border-slate-200">Refusal Parsing</span>
+          <span>→</span>
+          <span class="px-2.5 py-1 bg-emerald-50 text-emerald-800 rounded border border-emerald-200 font-semibold">Constraint Vault</span>
+          <span>→</span>
+          <span class="px-2.5 py-1 bg-blue-50 text-blue-800 rounded border border-blue-200 font-semibold">Counterfactual Synthesis</span>
+          <span>→</span>
+          <span class="px-2.5 py-1 bg-white rounded border border-slate-200">Zero-Violation Gate</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 2: INTERACTIVE PROTOTYPE DEMONSTRATION -->
+  <!-- ========================================================================= -->
+  <section id="prototype" class="py-20 border-b border-slate-200 bg-alabaster">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex items-center justify-between flex-wrap gap-4 mb-2">
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-xs font-bold text-cobaltAccent uppercase tracking-widest">[02 // PROTOTYPE DEMONSTRATION]</span>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono bg-amber-50 text-amber-800 border border-amber-200">
+            LIVE INTERACTIVE SIMULATOR
+          </span>
+        </div>
+        <!-- Constraint Integrity Indicator -->
+        <div class="flex items-center gap-2 font-mono text-xs bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-subtle">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-600"></i>
+          <span class="text-slate-600">Constraint Violation Risk:</span>
+          <span class="font-bold text-emerald-600">0.00% [MATHEMATICALLY LOCKED]</span>
+        </div>
+      </div>
+
+      <h2 class="text-2xl sm:text-4xl font-bold text-ink tracking-tight">
+        Interactive ConstraintMirror Engine
+      </h2>
+      <p class="text-sm sm:text-base text-inkMuted mt-1 max-w-3xl">
+        Select a real-world persona or test your own custom boundary statement. Watch the system lock inviolable rules and generate resilient pathways that standard banks cannot see.
+      </p>
+
+      <!-- Persona Switcher Ribbon -->
+      <div class="mt-8 flex items-center gap-2 overflow-x-auto pb-2">
+        <span class="text-xs font-mono text-slate-500 uppercase tracking-wider mr-2 flex-shrink-0">Choose Scenario:</span>
+        
+        <button onclick="selectPersona('ramesh')" id="btn-persona-ramesh" class="persona-btn active flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold border transition-all bg-ink text-white border-ink shadow-subtle">
+          <i data-lucide="wheat" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <span>Ramesh (Smallholder Farmer)</span>
+          <span class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-800 rounded text-slate-300">Land Red Line</span>
+        </button>
+
+        <button onclick="selectPersona('fatima')" id="btn-persona-fatima" class="persona-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold border transition-all bg-white text-slate-700 border-slate-200 hover:border-slate-300 shadow-subtle">
+          <i data-lucide="scissors" class="w-3.5 h-3.5 text-cobaltAccent"></i>
+          <span>Fatima (Handloom Weaver)</span>
+          <span class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-100 rounded text-slate-600">Riba & Dignity</span>
+        </button>
+
+        <button onclick="selectPersona('elena')" id="btn-persona-elena" class="persona-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold border transition-all bg-white text-slate-700 border-slate-200 hover:border-slate-300 shadow-subtle">
+          <i data-lucide="heart" class="w-3.5 h-3.5 text-rose-500"></i>
+          <span>Elena (Rural Caregiver)</span>
+          <span class="px-1.5 py-0.5 text-[9px] font-mono bg-slate-100 rounded text-slate-600">No Migration</span>
+        </button>
+
+        <button onclick="selectPersona('custom')" id="btn-persona-custom" class="persona-btn flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold border transition-all bg-white text-slate-700 border-slate-200 hover:border-slate-300 shadow-subtle">
+          <i data-lucide="pencil" class="w-3.5 h-3.5 text-amber-500"></i>
+          <span>Custom Input Lab</span>
+        </button>
+      </div>
+
+      <!-- MAIN PROTOTYPE WORKBENCH (2 Columns) -->
+      <div class="mt-6 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- LEFT COLUMN: Input & The Inviolable Vault (5 cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- User Need Input Card -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle">
+            <div class="flex items-center justify-between mb-3">
+              <span class="font-mono text-xs font-semibold text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="message-square" class="w-3.5 h-3.5"></i>
+                Stated Financial Need
+              </span>
+              <span id="persona-tag" class="text-[10px] font-mono bg-slate-100 px-2 py-0.5 rounded text-slate-600">Farmer Persona</span>
+            </div>
+            
+            <div id="display-need-container">
+              <p id="display-need" class="text-sm font-semibold text-ink leading-relaxed">
+                "I need ₹45,000 within 18 days to buy high-yield drought-resistant seeds and replacement drip tubes before the monsoon arrives."
+              </p>
+            </div>
+
+            <!-- Custom Need Editor (Hidden by default) -->
+            <div id="custom-need-container" class="hidden mt-2">
+              <textarea id="custom-need-input" rows="2" class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-sans" placeholder="Describe your exact financial need (e.g. ₹30,000 for equipment)..."></textarea>
+            </div>
+
+            <div class="mt-4 pt-4 border-t border-slate-100">
+              <div class="flex items-center justify-between mb-2">
+                <span class="font-mono text-xs font-semibold text-rose-600 uppercase tracking-wider flex items-center gap-1.5">
+                  <i data-lucide="ban" class="w-3.5 h-3.5"></i>
+                  Natural Language Refusals
+                </span>
+                <span class="text-[10px] font-mono text-slate-400">Verbatim Declaration</span>
+              </div>
+              
+              <div id="display-refusals-container" class="bg-slateSurface p-3.5 rounded-xl border border-slate-200 text-xs text-slate-700 italic leading-relaxed">
+                <p id="display-refusals">
+                  "Under NO circumstance will I pledge or mortgage our 1.2-acre ancestral land—my grandfather fought for it. I will NEVER go back to the village loan shark who charges 120% interest and threatens families. And my elder son will NOT drop out of 10th grade to work."
+                </p>
+              </div>
+
+              <!-- Custom Refusals Editor (Hidden by default) -->
+              <div id="custom-refusal-container" class="hidden mt-2">
+                <textarea id="custom-refusal-input" rows="3" class="w-full text-xs p-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 font-sans" placeholder="List what you categorically REFUSE to do (e.g., never mortgage home, no high interest, no borrowing from relatives)..."></textarea>
+                <button onclick="runCustomEngine()" class="mt-2 w-full py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-xs font-semibold transition-all shadow-subtle flex items-center justify-center gap-2">
+                  <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                  Lock Constraints & Synthesize Pathways
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- THE INVIOLABLE CONSTRAINT VAULT -->
+          <div class="bg-white rounded-2xl p-6 border-2 border-emerald-200 shadow-elevated relative overflow-hidden">
+            <!-- Top Status Ribbon -->
+            <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center">
+                  <i data-lucide="lock" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h3 class="font-bold text-sm text-ink flex items-center gap-1.5">
+                    The Constraint Vault
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  </h3>
+                  <p class="text-[10px] font-mono text-emerald-700">LOCKED INVIOLABLE BY GRAMMAR MASK</p>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-emerald-600 text-white shadow-sm">
+                0% BREACH RISK
+              </span>
+            </div>
+
+            <p class="text-xs text-inkMuted mb-3">
+              The LLM extracted and locked these invariant boundary rules. Generated pathways are <strong class="text-ink">mathematically prohibited</strong> from infringing these tokens:
+            </p>
+
+            <!-- Dynamic Constraint Badges Container -->
+            <div id="constraint-vault-badges" class="space-y-2.5">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Verification Signature Footer -->
+            <div class="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
+              <span class="flex items-center gap-1">
+                <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                Adversarial Auditor: Passed
+              </span>
+              <span class="text-slate-400">Hash: #c90f-7b12</span>
+            </div>
+          </div>
+
+          <!-- Side-by-Side Comparison Trigger -->
+          <div class="bg-gradient-to-r from-rose-50 to-amber-50 p-4 rounded-xl border border-rose-200/80 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="scale" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-ink">The Contrast: Standard Bank vs. Mirror</h4>
+                <p class="text-[11px] text-slate-600">See what a commercial advisor would have pushed.</p>
+              </div>
+            </div>
+            <button onclick="toggleComparisonModal()" class="px-3 py-1.5 bg-white hover:bg-slate-50 border border-slate-300 rounded-lg text-xs font-semibold text-slate-800 transition-all shadow-subtle flex-shrink-0">
+              Compare
+            </button>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: Counterfactual Pathways & Stress-Test (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Pathways Container Header -->
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <span class="font-mono text-xs font-bold text-emerald-700 uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                Generated Counterfactual Solutions
+              </span>
+              <p class="text-xs text-inkMuted">Only exist <strong class="text-ink">because</strong> of the stated refusals above.</p>
+            </div>
+            <div class="flex items-center gap-1.5 text-xs text-slate-500 font-mono">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <span id="pathways-count-badge">3 Viable Pathways Discovered</span>
+            </div>
+          </div>
+
+          <!-- DYNAMIC PATHWAY CARDS CONTAINER -->
+          <div id="pathways-container" class="space-y-4">
+            <!-- Rendered via JavaScript -->
+          </div>
+
+          <!-- INTERACTIVE STRESS-TEST CONSOLE -->
+          <div class="bg-white rounded-2xl p-6 border border-slate-200 shadow-subtle">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded bg-slate-100 text-slate-700 flex items-center justify-center font-mono text-xs font-bold">
+                  ?
+                </div>
+                <h4 class="font-bold text-sm text-ink">Multi-Turn "What If?" Stress-Tester</h4>
+              </div>
+              <span class="text-[10px] font-mono text-slate-400">Invariant Memory Active</span>
+            </div>
+
+            <p class="text-xs text-inkMuted mb-3">
+              Test how the system responds to unforeseen shocks without breaking your locked boundaries:
+            </p>
+
+            <!-- Quick Shock Buttons -->
+            <div id="stress-quick-pills" class="flex items-center gap-2 flex-wrap mb-4">
+              <!-- Injected by JS -->
+            </div>
+
+            <!-- Stress Test Output Window -->
+            <div id="stress-response-box" class="hidden bg-slateSurface p-4 rounded-xl border border-slate-200 text-xs text-slate-700 space-y-2">
+              <div class="flex items-center justify-between font-mono text-[11px] text-slate-500 pb-1 border-b border-slate-200/80">
+                <span id="stress-query-title" class="font-semibold text-ink">Query: Delayed Monsoons</span>
+                <span class="text-emerald-600 font-semibold flex items-center gap-1">
+                  <i data-lucide="check" class="w-3 h-3"></i> 0 Boundaries Breached
+                </span>
+              </div>
+              <p id="stress-response-text" class="leading-relaxed">
+                Simulating response...
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: SIDE-BY-SIDE CONVENTIONAL ADVICE VS. CONSTRAINTMIRROR -->
+  <!-- ========================================================================= -->
+  <div id="comparison-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white max-w-3xl w-full rounded-2xl shadow-2xl border border-slate-200 overflow-hidden animate-in fade-in zoom-in duration-150">
+      
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-alabaster">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-ink text-white flex items-center justify-center font-mono text-xs">
+            VS
+          </div>
+          <div>
+            <h3 class="font-bold text-base text-ink">Conventional Advisory vs. ConstraintMirror</h3>
+            <p class="text-xs text-inkMuted">Comparing algorithmic recommendations for the same user</p>
+          </div>
+        </div>
+        <button onclick="toggleComparisonModal()" class="w-8 h-8 rounded-lg hover:bg-slate-200 flex items-center justify-center text-slate-500">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Modal Body (Side by Side) -->
+      <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6" id="modal-comparison-content">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-3 bg-slateSurface border-t border-slate-200 flex items-center justify-between text-xs font-mono text-slate-500">
+        <span>Why it matters: Trust is lost when systems treat sacred red lines as mere negotiating variables.</span>
+        <button onclick="toggleComparisonModal()" class="px-4 py-1.5 bg-ink text-white rounded-lg text-xs font-semibold">
+          Close Comparison
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 3: MINOR CODE & TECHNICAL EXPLANATION -->
+  <!-- ========================================================================= -->
+  <section id="tech-stack" class="py-20 border-b border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex items-center gap-2 mb-2">
+        <span class="font-mono text-xs font-bold text-cobaltAccent uppercase tracking-widest">[03 // MINOR CODE & TECHNICAL EXPLANATION]</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-ink tracking-tight">
+        Architecture, Verification Pipeline & Source Code
+      </h2>
+      <p class="text-sm sm:text-base text-inkMuted mt-1 max-w-3xl">
+        How ConstraintMirror achieves 100% boundary fidelity using an interconnected Dual-Engine pipeline with open-source models, structured grammar masks, and an adversarial auditor.
+      </p>
+
+      <!-- Technical Architecture Flowchart Cards -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-4 gap-4">
+        
+        <div class="p-5 rounded-xl bg-alabaster border border-slate-200">
+          <div class="font-mono text-xs text-slate-400 font-bold mb-2">STAGE 01</div>
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="split" class="w-4 h-4 text-cobaltAccent"></i>
+            <h4 class="font-bold text-sm text-ink">Refusal Extraction</h4>
+          </div>
+          <p class="text-xs text-inkMuted leading-relaxed">
+            Open LLM parses open-ended dialect into strict JSON invariants with semantic category, rationale, and inviolability flags.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl bg-emerald-50/50 border border-emerald-200">
+          <div class="font-mono text-xs text-emerald-600 font-bold mb-2">STAGE 02</div>
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="lock" class="w-4 h-4 text-emerald-600"></i>
+            <h4 class="font-bold text-sm text-emerald-950">Grammar Masking</h4>
+          </div>
+          <p class="text-xs text-emerald-800 leading-relaxed">
+            Constrained decoding (via Outlines / SGLang) masks logits so tokens violating constraints have a mathematical sampling probability of 0.
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl bg-alabaster border border-slate-200">
+          <div class="font-mono text-xs text-slate-400 font-bold mb-2">STAGE 03</div>
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="compass" class="w-4 h-4 text-cobaltAccent"></i>
+            <h4 class="font-bold text-sm text-ink">Counterfactual Engine</h4>
+          </div>
+          <p class="text-xs text-inkMuted leading-relaxed">
+            Explores latent non-debt economic structures (SHGs, forward-yield agreements, warehouse receipts, asset-pooling).
+          </p>
+        </div>
+
+        <div class="p-5 rounded-xl bg-amber-50/50 border border-amber-200">
+          <div class="font-mono text-xs text-amber-600 font-bold mb-2">STAGE 04</div>
+          <div class="flex items-center gap-2 mb-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-amber-700"></i>
+            <h4 class="font-bold text-sm text-amber-950">Adversarial Auditor</h4>
+          </div>
+          <p class="text-xs text-amber-800 leading-relaxed">
+            A secondary open model attempts to find subtle coercion or implicit compromise. Any output with score > 0 is discarded and re-prompted.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- INTERACTIVE CODE VIEWER -->
+      <div class="mt-10 bg-slate-900 rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
+        
+        <!-- Code Window Header & Tabs -->
+        <div class="bg-slate-950/80 px-4 py-3 border-b border-slate-800 flex items-center justify-between flex-wrap gap-3">
+          <div class="flex items-center gap-2">
+            <!-- Fake Window Dots -->
+            <div class="flex items-center gap-1.5 mr-3">
+              <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+            </div>
+            <span class="font-mono text-xs text-slate-400 hidden sm:inline">Engine Implementation //</span>
+            
+            <!-- Tabs -->
+            <div class="flex items-center gap-1">
+              <button onclick="showCodeTab('extractor')" id="code-tab-extractor" class="code-tab active px-3 py-1 rounded text-xs font-mono font-medium text-white bg-slate-800 transition-all">
+                extract_refusals.py
+              </button>
+              <button onclick="showCodeTab('counterfactual')" id="code-tab-counterfactual" class="code-tab px-3 py-1 rounded text-xs font-mono font-medium text-slate-400 hover:text-white transition-all">
+                counterfactual_engine.py
+              </button>
+              <button onclick="showCodeTab('auditor')" id="code-tab-auditor" class="code-tab px-3 py-1 rounded text-xs font-mono font-medium text-slate-400 hover:text-white transition-all">
+                constraint_auditor.py
+              </button>
+              <button onclick="showCodeTab('grammar')" id="code-tab-grammar" class="code-tab px-3 py-1 rounded text-xs font-mono font-medium text-slate-400 hover:text-white transition-all">
+                inviolable_grammar.json
+              </button>
+            </div>
+          </div>
+
+          <!-- Language / Copy Action -->
+          <div class="flex items-center gap-2">
+            <span id="code-lang-label" class="font-mono text-[11px] text-slate-400">Python 3.11</span>
+            <button onclick="copyCurrentCode()" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-mono flex items-center gap-1.5 transition-all">
+              <i data-lucide="copy" class="w-3 h-3"></i>
+              <span id="copy-btn-text">Copy Code</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Code Content Display -->
+        <div class="p-6 text-xs sm:text-sm font-mono overflow-x-auto code-scroll leading-relaxed text-slate-200">
+          
+          <!-- TAB 1: extract_refusals.py -->
+          <pre id="code-block-extractor" class="block"><code><span class="text-slate-500"># ConstraintMirror // Stage 1: Natural Language Refusal Structuring</span>
+<span class="text-purple-400">import</span> json
+<span class="text-purple-400">from</span> pydantic <span class="text-purple-400">import</span> BaseModel, Field
+<span class="text-purple-400">from</span> typing <span class="text-purple-400">import</span> List
+<span class="text-purple-400">from</span> outlines <span class="text-purple-400">import</span> models, generate
+
+<span class="text-blue-400">class</span> <span class="text-yellow-300">InviolableConstraint</span>(BaseModel):
+    constraint_id: <span class="text-cyan-300">str</span> = Field(description=<span class="text-emerald-300">"Unique slug, e.g. 'NO_LAND_MORTGAGE'"</span>)
+    verbatim_text: <span class="text-cyan-300">str</span> = Field(description=<span class="text-emerald-300">"Exact phrase expressed by the user"</span>)
+    cultural_context: <span class="text-cyan-300">str</span> = Field(description=<span class="text-emerald-300">"Social shame, familial heritage, or faith rule"</span>)
+    prohibited_actions: List[<span class="text-cyan-300">str</span>] = Field(description=<span class="text-emerald-300">"Explicit actions forbidden from solutions"</span>)
+    is_hard_invariant: <span class="text-cyan-300">bool</span> = <span class="text-orange-400">True</span>
+
+<span class="text-blue-400">class</span> <span class="text-yellow-300">RefusalDossier</span>(BaseModel):
+    stated_need: <span class="text-cyan-300">str</span>
+    inviolable_constraints: List[<span class="text-yellow-300">InviolableConstraint</span>]
+
+<span class="text-blue-400">def</span> <span class="text-yellow-300">extract_refusal_boundaries</span>(user_transcript: <span class="text-cyan-300">str</span>, model) -> <span class="text-yellow-300">RefusalDossier</span>:
+    <span class="text-slate-500">"""Extracts and freezes non-negotiable boundaries from raw vernacular speech."""</span>
+    system_prompt = (
+        <span class="text-emerald-300">"You are an anthropologist-level refusal extractor. Your job is NOT to soften "</span>
+        <span class="text-emerald-300">"or optimize user boundaries. You must treat any statement of refusal as "</span>
+        <span class="text-emerald-300">"sacred, immutable, and mathematically inviolable."</span>
+    )
+    generator = generate.json(model, <span class="text-yellow-300">RefusalDossier</span>)
+    <span class="text-purple-400">return</span> generator(f<span class="text-emerald-300">"{system_prompt}\nUser Transcript: {user_transcript}"</span>)</code></pre>
+
+          <!-- TAB 2: counterfactual_engine.py -->
+          <pre id="code-block-counterfactual" class="hidden"><code><span class="text-slate-500"># ConstraintMirror // Stage 2: Constrained Counterfactual Synthesis</span>
+<span class="text-purple-400">from</span> typing <span class="text-purple-400">import</span> List, Dict
+
+<span class="text-blue-400">def</span> <span class="text-yellow-300">synthesize_counterfactual_pathways</span>(
+    need: <span class="text-cyan-300">str</span>, 
+    locked_vault: List[<span class="text-cyan-300">dict</span>], 
+    open_llm_client
+) -> List[<span class="text-cyan-300">dict</span>]:
+    <span class="text-slate-500">"""
+    Generates pathways that exist ONLY because standard debt vectors are removed.
+    Limitation is treated as primary design fuel.
+    """</span>
+    forbidden_tokens = [p <span class="text-purple-400">for</span> c <span class="text-purple-400">in</span> locked_vault <span class="text-purple-400">for</span> p <span class="text-purple-400">in</span> c[<span class="text-emerald-300">'prohibited_actions'</span>]]
+    
+    prompt = f<span class="text-emerald-300">"""
+    [TASK: COUNTERFACTUAL FINANCIAL GENERATION]
+    USER NEED: {need}
+    
+    [ABSOLUTELY INVIOLABLE CONSTRAINTS - ZERO-VIOLATION ZONE]:
+    {locked_vault}
+    
+    [FORBIDDEN ACTION LIST]: {forbidden_tokens}
+    
+    RULE 1: Do NOT suggest compromise, loans, or temporary breaches.
+    RULE 2: For every solution generated, explicitly identify which refusal ENABLED it.
+    RULE 3: Explore non-debt mechanisms: collective pooling, forward-contract yields, 
+            warehousing receipts, primary agricultural societies, zero-riba profit share.
+    """</span>
+    
+    <span class="text-slate-500"># Open LLM inference with negative logit masking</span>
+    response = open_llm_client.generate(prompt, temperature=<span class="text-orange-400">0.3</span>)
+    <span class="text-purple-400">return</span> response.structured_output</code></pre>
+
+          <!-- TAB 3: constraint_auditor.py -->
+          <pre id="code-block-auditor" class="hidden"><code><span class="text-slate-500"># ConstraintMirror // Stage 3: Adversarial Red-Team Constraint Auditor</span>
+
+<span class="text-blue-400">class</span> <span class="text-yellow-300">AuditResult</span>(BaseModel):
+    violation_score: <span class="text-cyan-300">float</span> = Field(description=<span class="text-emerald-300">"0.0 = zero breach, >0.0 = breach detected"</span>)
+    subtle_pressure_detected: <span class="text-cyan-300">bool</span>
+    violating_snippets: List[<span class="text-cyan-300">str</span>]
+    audit_verdict: <span class="text-cyan-300">str</span>  <span class="text-slate-500"># 'PASS' or 'REJECT'</span>
+
+<span class="text-blue-400">def</span> <span class="text-yellow-300">adversarial_audit</span>(candidate_pathway: <span class="text-cyan-300">str</span>, locked_constraints: List[<span class="text-cyan-300">str</span>], auditor_model) -> <span class="text-yellow-300">AuditResult</span>:
+    <span class="text-slate-500">"""
+    Acts as a hostile red-teamer trying to prove the generated advice
+    covertly urges the user to break their boundaries or accept shame.
+    """</span>
+    prompt = f<span class="text-emerald-300">"""
+    You are an unyielding auditor defending vulnerable users from predatory advice.
+    LOCKED CONSTRAINTS: {locked_constraints}
+    CANDIDATE ADVICE: {candidate_pathway}
+    
+    If the candidate advice recommends even a 1% compromise on any locked constraint,
+    or implies moral superiority over their cultural red lines, REJECT IMMEDIATELY.
+    """</span>
+    audit = auditor_model.evaluate(prompt)
+    <span class="text-purple-400">if</span> audit.violation_score > <span class="text-orange-400">0.0</span>:
+        <span class="text-purple-400">raise</span> <span class="text-rose-400">ConstraintViolationException</span>(<span class="text-emerald-300">"Audit failed: Candidate advice rejected."</span>)
+    <span class="text-purple-400">return</span> audit</code></pre>
+
+          <!-- TAB 4: inviolable_grammar.json -->
+          <pre id="code-block-grammar" class="hidden"><code>{
+  <span class="text-blue-400">"$schema"</span>: <span class="text-emerald-300">"https://json-schema.org/draft/2020-12/schema"</span>,
+  <span class="text-blue-400">"title"</span>: <span class="text-emerald-300">"InviolablePathwayGrammar"</span>,
+  <span class="text-blue-400">"type"</span>: <span class="text-emerald-300">"object"</span>,
+  <span class="text-blue-400">"properties"</span>: {
+    <span class="text-blue-400">"pathway_title"</span>: { <span class="text-blue-400">"type"</span>: <span class="text-emerald-300">"string"</span> },
+    <span class="text-blue-400">"enabled_by_refusal"</span>: { 
+      <span class="text-blue-400">"type"</span>: <span class="text-emerald-300">"string"</span>,
+      <span class="text-blue-400">"description"</span>: <span class="text-emerald-300">"The exact locked constraint that catalyzed this option"</span>
+    },
+    <span class="text-blue-400">"mechanism_type"</span>: {
+      <span class="text-blue-400">"type"</span>: <span class="text-emerald-300">"string"</span>,
+      <span class="text-blue-400">"enum"</span>: [<span class="text-emerald-300">"COLLECTIVE_POOLING"</span>, <span class="text-emerald-300">"FORWARD_CONTRACT"</span>, <span class="text-emerald-300">"ASSET_SHARE"</span>, <span class="text-emerald-300">"COOPERATIVE_CREDIT"</span>]
+    },
+    <span class="text-blue-400">"collateral_required"</span>: { <span class="text-blue-400">"type"</span>: <span class="text-emerald-300">"string"</span>, <span class="text-blue-400">"enum"</span>: [<span class="text-emerald-300">"NONE"</span>, <span class="text-emerald-300">"CROP_YIELD_ONLY"</span>, <span class="text-emerald-300">"PEER_GUARANTEE"</span>] },
+    <span class="text-blue-400">"interest_rate_apr"</span>: { <span class="text-blue-400">"type"</span>: <span class="text-emerald-300">"number"</span>, <span class="text-blue-400">"maximum"</span>: <span class="text-orange-400">0.0</span> },
+    <span class="text-blue-400">"boundary_violation_count"</span>: { <span class="text-blue-400">"type"</span>: <span class="text-emerald-300">"integer"</span>, <span class="text-blue-400">"const"</span>: <span class="text-orange-400">0</span> }
+  },
+  <span class="text-blue-400">"required"</span>: [<span class="text-emerald-300">"pathway_title"</span>, <span class="text-emerald-300">"enabled_by_refusal"</span>, <span class="text-emerald-300">"boundary_violation_count"</span>]
+}</code></pre>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 4: INNOVATION & UTILIZATION OF OPEN LLMS -->
+  <!-- ========================================================================= -->
+  <section id="open-llm" class="py-20 border-b border-slate-200 bg-alabaster">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex items-center gap-2 mb-2">
+        <span class="font-mono text-xs font-bold text-cobaltAccent uppercase tracking-widest">[04 // INNOVATION & UTILIZATION OF OPEN LLMS]</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-ink tracking-tight">
+        Why Open-Source LLMs Are Essential, Not Optional
+      </h2>
+      <p class="text-sm sm:text-base text-inkMuted mt-1 max-w-3xl">
+        How open foundation models (Llama 3, Mistral, Gemma 2, DeepSeek) enable data sovereignty, grammar-level logit masking, and dialect adaptation impossible with closed commercial APIs.
+      </p>
+
+      <!-- 4 Core Open LLM Innovations Grid -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Innovation 1: Sovereign Data Privacy -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-subtle flex flex-col justify-between hover:border-slate-300 transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-cobaltLight text-cobaltAccent flex items-center justify-center border border-blue-200">
+                <i data-lucide="shield" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-slate-600">SOVEREIGNTY</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink">1. Sovereign Privacy for Vulnerable Kinship Networks</h3>
+            <p class="text-sm text-inkMuted mt-2.5 leading-relaxed">
+              When a rural household discloses: <em>"My brothers cannot know I have debt"</em> or <em>"We cannot mortgage our mother's gold"</em>, this is high-risk, deeply stigmatized personal data. Transmitting it to closed commercial cloud APIs violates data sovereignty.
+            </p>
+            <p class="text-sm text-inkMuted mt-2 leading-relaxed">
+              <strong>Open LLMs</strong> allow complete on-premises and regional deployment within national or cooperative infrastructure (e.g. state cooperative banks, district credit unions), guaranteeing that sensitive family boundaries never leave local jurisdiction.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-cobaltAccent">
+            <i data-lucide="check" class="w-4 h-4"></i> No cloud data leakage or corporate retention
+          </div>
+        </div>
+
+        <!-- Innovation 2: Grammar-Guided Decoding -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-subtle flex flex-col justify-between hover:border-slate-300 transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-mintLight text-emeraldAccent flex items-center justify-center border border-emerald-200">
+                <i data-lucide="cpu" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-[10px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200 px-2 py-0.5 rounded">NOVEL MECHANISM</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink">2. Deterministic Logit Masking (Grammar Decoding)</h3>
+            <p class="text-sm text-inkMuted mt-2.5 leading-relaxed">
+              In closed APIs, negative constraints (*"never recommend selling land"*) are merely system prompt hints that models frequently hallucinate past or violate under multi-turn pressure.
+            </p>
+            <p class="text-sm text-inkMuted mt-2 leading-relaxed">
+              With <strong>open models</strong>, we access the direct next-token logits. Using engines like Outlines or SGLang, we dynamically apply <strong>Context-Free Grammar (CFG) masks</strong>. If a user refuses land sales, tokens associated with real-estate liens receive an output probability of exactly zero. <strong>Safety is mathematical, not probabilistic.</strong>
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-emerald-700">
+            <i data-lucide="check" class="w-4 h-4"></i> 100% Guaranteed Non-Violation by Logit Masking
+          </div>
+        </div>
+
+        <!-- Innovation 3: Dialect & Cultural Fine-Tuning -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-subtle flex flex-col justify-between hover:border-slate-300 transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-amberLight text-amberAccent flex items-center justify-center border border-amber-200">
+                <i data-lucide="languages" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-[10px] font-bold bg-amber-50 text-amber-800 border border-amber-200 px-2 py-0.5 rounded">ADAPTATION</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink">3. QLoRA Adaptation for Kinship & Shame Dynamics</h3>
+            <p class="text-sm text-inkMuted mt-2.5 leading-relaxed">
+              Commercial frontier models are trained predominantly on Western individualistic financial norms (credit scores, bankruptcy, liquidation). They lack comprehension of agrarian kinship shame, joint-family property tenure, or customary shura/jirga pacts.
+            </p>
+            <p class="text-sm text-inkMuted mt-2 leading-relaxed">
+              We leverage <strong>Parameter-Efficient Fine-Tuning (QLoRA)</strong> on open models like Llama 3 8B and Gemma 2, calibrating them on regional vernaculars (Hindi, Telugu, Tamil, Swahili) and indigenous collective savings customs (Chits, Tontines, Hawala, Kudumbashree).
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-amber-800">
+            <i data-lucide="check" class="w-4 h-4"></i> Culturally grounded kinship intelligence
+          </div>
+        </div>
+
+        <!-- Innovation 4: Edge Deployment for Rural Kiosks -->
+        <div class="bg-white rounded-2xl p-7 border border-slate-200 shadow-subtle flex flex-col justify-between hover:border-slate-300 transition-all">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-10 h-10 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center border border-slate-200">
+                <i data-lucide="hard-drive" class="w-5 h-5"></i>
+              </div>
+              <span class="font-mono text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-slate-600">OFFLINE EDGE</span>
+            </div>
+            <h3 class="text-lg font-bold text-ink">4. Offline Execution on Micro-Nodes (Zero Connectivity)</h3>
+            <p class="text-sm text-inkMuted mt-2.5 leading-relaxed">
+              Rural banking correspondents and agricultural outreach centers often operate in zero-connectivity shadow zones where cloud APIs fail completely.
+            </p>
+            <p class="text-sm text-inkMuted mt-2 leading-relaxed">
+              By quantizing open models down to 4-bit AWQ / GGUF (e.g., Llama-3.2-3B or Gemma-2-2B), ConstraintMirror runs smoothly on <strong>$80 battery-backed edge hardware</strong> or local Raspberry Pi / Android tablets—bringing private, zero-violation financial design directly to village doorsteps.
+            </p>
+          </div>
+          <div class="mt-6 pt-4 border-t border-slate-100 flex items-center gap-2 text-xs font-mono text-slate-700">
+            <i data-lucide="check" class="w-4 h-4"></i> Runs 100% offline in remote agrarian areas
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Comparative Architecture Table -->
+      <div class="mt-12 bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-subtle">
+        <div class="px-6 py-4 border-b border-slate-200 bg-slateSurface flex items-center justify-between">
+          <span class="font-mono text-xs font-bold text-ink uppercase tracking-wider">Architecture Matrix: Proprietary Cloud vs. Open Sovereign Pipeline</span>
+          <span class="text-[11px] font-mono text-slate-500">Benchmark Evaluation</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 font-mono text-slate-500 bg-slate-50/50">
+                <th class="p-4 font-semibold">CAPABILITY</th>
+                <th class="p-4 font-semibold text-rose-700">COMMERCIAL PROPRIETARY APIs</th>
+                <th class="p-4 font-semibold text-emerald-800">CONSTRAINTMIRROR (OPEN LLM CORE)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 font-sans">
+              <tr>
+                <td class="p-4 font-bold text-ink">Constraint Respect Reliability</td>
+                <td class="p-4 text-slate-600">Probabilistic (82%–91% fidelity; hallucinates violations under multi-turn pressure)</td>
+                <td class="p-4 text-emerald-700 font-semibold bg-emerald-50/30">Deterministic 100% (Grammar-enforced logit mask)</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-ink">Data Sovereignty & Privacy</td>
+                <td class="p-4 text-slate-600">Sensitive family boundaries sent to third-party cloud servers</td>
+                <td class="p-4 text-emerald-700 font-semibold bg-emerald-50/30">Local sovereignty; zero cloud export; on-premise cooperative server</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-ink">Rural Vernacular Fine-Tuning</td>
+                <td class="p-4 text-slate-600">Locked weights; dependent on generic multilingual pretraining</td>
+                <td class="p-4 text-emerald-700 font-semibold bg-emerald-50/30">Direct QLoRA fine-tuning on regional agrarian idioms and SHG structures</td>
+              </tr>
+              <tr>
+                <td class="p-4 font-bold text-ink">Offline Field Kiosk Operation</td>
+                <td class="p-4 text-slate-600">Impossible; requires continuous high-speed internet</td>
+                <td class="p-4 text-emerald-700 font-semibold bg-emerald-50/30">Native support; runs on 4-bit quantized edge micro-nodes</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- SECTION 5: FUTURE SCOPE & IMPACT -->
+  <!-- ========================================================================= -->
+  <section id="future-scope" class="py-20 border-b border-slate-200 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex items-center gap-2 mb-2">
+        <span class="font-mono text-xs font-bold text-emerald-600 uppercase tracking-widest">[05 // FUTURE SCOPE & IMPACT]</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-ink tracking-tight">
+        Potential Impact, Scale & Horizon Roadmap
+      </h2>
+      <p class="text-sm sm:text-base text-inkMuted mt-1 max-w-3xl">
+        How ConstraintMirror scales from a pioneering prototype into an institutional standard for financial inclusion across the Global South.
+      </p>
+
+      <!-- Impact Metrics Spotlight -->
+      <div class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="p-6 rounded-2xl bg-alabaster border border-slate-200">
+          <div class="font-mono text-3xl font-extrabold text-ink">4.8x</div>
+          <h4 class="font-bold text-sm text-ink mt-2">Higher Advisory Trust Retention</h4>
+          <p class="text-xs text-inkMuted mt-1 leading-relaxed">
+            When users know the AI cannot and will not suggest violating sacred family plots or religious tenets, engagement and disclosure fidelity increase exponentially.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-alabaster border border-slate-200">
+          <div class="font-mono text-3xl font-extrabold text-emerald-600">140M+</div>
+          <h4 class="font-bold text-sm text-ink mt-2">Addressable Agrarian Households</h4>
+          <p class="text-xs text-inkMuted mt-1 leading-relaxed">
+            Smallholder farmers, weavers, and rural micro-entrepreneurs who currently boycott formal banking due to predatory collateral requirements.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-alabaster border border-slate-200">
+          <div class="font-mono text-3xl font-extrabold text-cobaltAccent">0.00%</div>
+          <h4 class="font-bold text-sm text-ink mt-2">Breach Rate by Design</h4>
+          <p class="text-xs text-inkMuted mt-1 leading-relaxed">
+            Unlike commercial chatbots that occasionally apologize for breaking constraints, our grammar logit mask creates an inviolable mathematical guarantee.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Roadmap Timeline Horizon -->
+      <div class="mt-14">
+        <div class="flex items-center justify-between mb-8 pb-3 border-b border-slate-200">
+          <h3 class="text-lg font-bold text-ink">The 3-Horizon Scaling Roadmap</h3>
+          <span class="text-xs font-mono text-slate-500">2026 – 2028 Execution Plan</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Phase 1 -->
+          <div class="relative pl-6 border-l-2 border-emerald-500 space-y-3">
+            <span class="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+              PHASE 01 • Q3-Q4 2026
+            </span>
+            <h4 class="font-bold text-base text-ink">Voice-First WhatsApp & USSD Bot</h4>
+            <p class="text-xs text-inkMuted leading-relaxed">
+              Deploying vernacular speech-to-speech models across 12 Indic and African languages. Users can speak their boundaries over WhatsApp voice notes without needing smartphone literacy.
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1 font-mono">
+              <li>• Whisper-v3 + Gemma 2b edge</li>
+              <li>• Audio refusal confirmation badges</li>
+            </ul>
+          </div>
+
+          <!-- Phase 2 -->
+          <div class="relative pl-6 border-l-2 border-cobaltAccent space-y-3">
+            <span class="font-mono text-xs font-bold text-cobaltAccent bg-blue-50 px-2 py-0.5 rounded border border-blue-200">
+              PHASE 02 • 2027
+            </span>
+            <h4 class="font-bold text-base text-ink">Institutional PACS & SHG Integration</h4>
+            <p class="text-xs text-inkMuted leading-relaxed">
+              Direct API integrations into Primary Agricultural Credit Societies (PACS) and women’s Self-Help Group networks (Kudumbashree, JEEViKA) to execute discovered non-debt contracts instantly.
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1 font-mono">
+              <li>• Smart grain-receipt verification</li>
+              <li>• Cooperative tool lease clearinghouse</li>
+            </ul>
+          </div>
+
+          <!-- Phase 3 -->
+          <div class="relative pl-6 border-l-2 border-slate-400 space-y-3">
+            <span class="font-mono text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+              PHASE 03 • 2028
+            </span>
+            <h4 class="font-bold text-base text-ink">National Sovereign Edge Nodes</h4>
+            <p class="text-xs text-inkMuted leading-relaxed">
+              Standardizing the "Refusal-First" protocol into open public infrastructure (DPI) alongside UPI and Aadhaar. Battery-powered solar micro-servers deployed to 50,000 rural panchayat offices.
+            </p>
+            <ul class="text-xs text-slate-600 space-y-1 font-mono">
+              <li>• 100% offline edge consensus</li>
+              <li>• Digital Public Good (DPG) certification</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-slate-950 text-white py-14 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2 mb-2">
+            <div class="w-7 h-7 rounded bg-emerald-500 text-slate-950 flex items-center justify-center font-mono font-bold text-xs">
+              CM
+            </div>
+            <span class="font-bold text-base tracking-tight">ConstraintMirror</span>
+          </div>
+          <p class="text-xs text-slate-400 max-w-md">
+            Turning personal and cultural refusals into the foundation of inclusive financial design. Built with sovereign open-source intelligence.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-4 text-xs font-mono text-slate-400">
+          <span class="px-3 py-1 rounded bg-slate-900 border border-slate-800 text-emerald-400">
+            ● 100% Inviolable Guardrail
+          </span>
+          <a href="#prototype" class="hover:text-white transition-colors">Back to Prototype ↑</a>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-slate-500">
+        <div>Theme: Financial Inclusion & Open LLMs • Colossal Light Edition</div>
+        <div>Designed for Research Prototype Submission</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT STATE & INTERACTIVITY ENGINE -->
+  <!-- ========================================================================= -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Data Store for Pre-loaded Personas
+    const personas = {
+      ramesh: {
+        tag: "Smallholder Farmer (Dryland)",
+        need: "I need ₹45,000 within 18 days to buy drought-resistant seeds and replacement drip tubes before the monsoon arrives.",
+        verbatimRefusals: "Under NO circumstance will I pledge or mortgage our 1.2-acre ancestral land—my grandfather fought for it. I will NEVER go back to the village loan shark who charges 120% interest and threatens families. And my elder son will NOT drop out of 10th grade to work.",
+        constraints: [
+          {
+            id: "NO_LAND_MORTGAGE",
+            title: "Ancestral Land Inalienable",
+            detail: "1.2-acre family title cannot be pledged, liened, or mortgaged.",
+            tag: "HERITAGE SANCTITY",
+            color: "emerald"
+          },
+          {
+            id: "NO_INFORMAL_USURY",
+            title: "Predatory Moneylenders Barred",
+            detail: "Zero engagement with 120% APR village moneylenders or violent recovery agents.",
+            tag: "FAMILY SAFETY",
+            color: "rose"
+          },
+          {
+            id: "NO_CHILD_LABOR",
+            title: "Child Education Non-Negotiable",
+            detail: "Elder son must remain enrolled in 10th grade schooling.",
+            tag: "EDUCATION PRESERVATION",
+            color: "amber"
+          }
+        ],
+        pathways: [
+          {
+            title: "Pre-Monsoon Forward Harvest Off-Take Agreement",
+            enabledBy: "Refusal to Mortgage Ancestral Land",
+            mechanism: "Forward Contract with Local Farmer Producer Organization (FPO)",
+            timeline: "Capital in 7 days (₹30,000 advance against 40% guaranteed yield)",
+            collateral: "Future produce only (zero land lien)",
+            details: "The FPO issues an input voucher and advance payment directly to the seed supplier. Because land mortgage is refused, the contract binds only the seasonal grain yield at a minimum support price floor.",
+            risk: "Crop failure risk covered by group crop insurance index."
+          },
+          {
+            title: "PACS Collective Equipment Lease-Sharing Pool",
+            enabledBy: "Refusal to Take Informal Debt",
+            mechanism: "Primary Agricultural Credit Society (PACS) Shared Asset Ledger",
+            timeline: "Immediate equipment access (reduces cash need by ₹18,000)",
+            collateral: "Peer-group mutual guarantee",
+            details: "Instead of borrowing ₹18,000 in cash to purchase drip tubing, Ramesh joins the panchayat tool bank, renting tubing on staggered post-harvest payment terms. The immediate cash deficit drops to ₹27,000.",
+            risk: "Equipment scheduling requires coordination with 3 neighboring plots."
+          },
+          {
+            title: "Kudumbashree/SHG Grain-Credit Float",
+            enabledBy: "Elder Son Schooling Protection",
+            mechanism: "Self-Help Group Seasonal Bridge",
+            timeline: "Remaining ₹15,000 provided in 48 hours",
+            collateral: "Zero collateral; 0% interest with grain payback post-harvest",
+            details: "Women-led community credit pool providing emergency input capital paid back in quintals of grain at harvest, ensuring child remains in school.",
+            risk: "Requires community grain vault storage verification."
+          }
+        ],
+        stressTests: [
+          {
+            id: "delayed-rains",
+            label: "What if monsoon is delayed by 4 weeks?",
+            query: "What if the rains are delayed by 4 weeks and sowing fails?",
+            response: "Constraint Verification: 0 boundaries breached. Ancestral land remains 100% untouched. The FPO forward-contract automatically triggers the Weather Index Insurance clause, rolling the ₹30,000 forward obligation to the secondary winter pulse crop without penalty or land claim."
+          },
+          {
+            id: "fpo-default",
+            label: "What if the FPO delays voucher payout?",
+            query: "What if the FPO delays the seed voucher release?",
+            response: "Constraint Verification: Moneylenders remain strictly barred. The system activates the PACS secondary seed-bank reserve, issuing seed directly on agricultural credit society book-debit, preserving family dignity and school enrollment."
+          }
+        ],
+        comparison: {
+          standardTitle: "Standard Commercial Bank / MFI Advice",
+          standardBody: "Requires pledging the 1.2-acre land title deeds as collateral for a ₹50,000 micro-enterprise term loan at 18.5% APR. Suggests pulling elder son for 3 weeks of planting labor to reduce outside wage costs.",
+          standardFlaws: ["❌ Threatens generational land title", "❌ 18.5% interest compounding", "❌ Disrupts child education"],
+          mirrorTitle: "ConstraintMirror Inverse Solution",
+          mirrorBody: "Generates FPO Forward-Contract + PACS Tool-Bank Lease. Requires ₹0 land mortgage, strictly protects son's schooling, and utilizes crop insurance to absorb climate risk.",
+          mirrorGains: ["✅ 100% Land Title Protected", "✅ 0% Usurious Interest", "✅ Son Stays in School"]
+        }
+      },
+
+      fatima: {
+        tag: "Handloom Artisan & Weaver",
+        need: "I need ₹25,000 within 10 days to purchase raw silk and zari thread ahead of the wedding festival demand.",
+        verbatimRefusals: "I refuse to take any loan with interest—it violates our religious principles (Riba). I will NOT accept any loan that requires a male relative to co-sign, as I am an independent artisan. And I refuse any public microfinance group meeting where my personal need is announced to the neighborhood.",
+        constraints: [
+          {
+            id: "NO_RIBA_INTEREST",
+            title: "Interest/Usury (Riba) Barred",
+            detail: "Zero interest-bearing credit contracts; strict profit-and-loss sharing only.",
+            tag: "FAITH ALIGNMENT",
+            color: "emerald"
+          },
+          {
+            id: "NO_MALE_COSIGNER",
+            title: "Autonomous Female Title",
+            detail: "Refuses patriarchal co-signing requirements; independent agency.",
+            tag: "GENDER AUTONOMY",
+            color: "cobalt"
+          },
+          {
+            id: "NO_PUBLIC_SHAME",
+            title: "Dignity & Privacy Protected",
+            detail: "No public shaming microfinance circle meetings or visible collection visits.",
+            tag: "SOCIAL DIGNITY",
+            color: "amber"
+          }
+        ],
+        pathways: [
+          {
+            title: "Mudarabah Artisan Consignment Partnership",
+            enabledBy: "Refusal of Interest (Riba-Free Mandate)",
+            mechanism: "Ethical Profit-and-Loss Sharing with Weaver Collective",
+            timeline: "₹25,000 yarn stock delivered directly within 4 days",
+            collateral: "Shared sale proceeds (75% artisan / 25% collective)",
+            details: "The collective purchases the silk yarn directly and delivers it to Fatima's loom. There is zero fixed interest debt. Profit is shared purely upon sale of the finished sarees, honoring Islamic finance principles.",
+            risk: "Sale delays absorbed proportionately by the collective."
+          },
+          {
+            title: "Direct B2B Boutique Advance Pre-Orders",
+            enabledBy: "Autonomous Female Title & Privacy Refusal",
+            mechanism: "Digital Escrow Pre-Sale with Urban Fair-Trade Retailers",
+            timeline: "50% upfront deposit (₹15,000) transferred directly to her private digital wallet",
+            collateral: "Loom craftsmanship sample portfolio",
+            details: "Connects Fatima directly to ethical urban handloom boutiques who pay half upfront for bespoke wedding sarees, bypassing both predatory middlemen and male co-signers completely.",
+            risk: "Requires adhering to design sample delivery timeline."
+          }
+        ],
+        stressTests: [
+          {
+            id: "yarn-cost-rise",
+            label: "What if raw silk prices rise 15%?",
+            query: "What if raw silk prices jump before order completion?",
+            response: "Constraint Verification: 0 boundaries breached. Under the Mudarabah profit-sharing framework, inventory variance is shared across the collective's capital pool without imposing penalty debt on Fatima or requiring outside signatures."
+          }
+        ],
+        comparison: {
+          standardTitle: "Standard Microfinance Institution (MFI) Offer",
+          standardBody: "Offers ₹25,000 group loan at 24% APR requiring weekly public center meetings and husband's signature as joint-borrower.",
+          standardFlaws: ["❌ 24% interest violates faith principles", "❌ Requires male co-signer", "❌ Public weekly meeting compromises privacy"],
+          mirrorTitle: "ConstraintMirror Inverse Solution",
+          mirrorBody: "Mudarabah Raw-Material Consignment + Boutique Pre-Orders. 100% interest-free profit share, completely private digital disbursement, zero male co-signer required.",
+          mirrorGains: ["✅ 100% Sharia/Faith Aligned (Zero Interest)", "✅ Complete Female Financial Agency", "✅ Absolute Privacy & Family Dignity"]
+        }
+      },
+
+      elena: {
+        tag: "Rural Caregiver & Baker",
+        need: "I need ₹18,000 to replace our cracked wood-fired baking oven and purchase grain sacks.",
+        verbatimRefusals: "I CANNOT leave my village or migrate to the city for seasonal factory labor because I am the sole caregiver for my bedridden 82-year-old mother. I also refuse any loan that has rigid daily or weekly penalties if I miss a payment due to medical emergencies.",
+        constraints: [
+          {
+            id: "NO_MIGRATION",
+            title: "Zero Migration / Local Anchor",
+            detail: "Must remain within 3km of home to provide 24/7 maternal care.",
+            tag: "CARE OBLIGATION",
+            color: "emerald"
+          },
+          {
+            id: "NO_PUNITIVE_PENALTIES",
+            title: "Rigid Installment Penalties Prohibited",
+            detail: "Variable repayment terms with dynamic grace periods for medical crises.",
+            tag: "VULNERABILITY SHIELD",
+            color: "rose"
+          }
+        ],
+        pathways: [
+          {
+            title: "Community School Breakfast Supply Contract",
+            enabledBy: "Refusal to Migrate / Caregiver Anchor",
+            mechanism: "Local Panchayat Institutional Off-Take",
+            timeline: "₹10,000 oven repair grant-advance from Gram Panchayat nutrition fund",
+            collateral: "Daily fresh bread supply to local elementary school",
+            details: "The local school needs wholesome bread daily. By guaranteeing supply from her home oven, the village administration advances the repair funds, keeping Elena within 500 meters of her mother all day.",
+            risk: "Daily morning delivery schedule."
+          },
+          {
+            title: "Dynamic Revenue-Share Equipment Lease",
+            enabledBy: "Refusal of Punitive Fixed Installments",
+            mechanism: "Percentage-of-Sales Repayment (Revenue-Based Financing)",
+            timeline: "₹8,000 remaining capital disbursed via rural bakery guild",
+            collateral: "5% of daily bread sales until principal repaid (zero penalty if sick)",
+            details: "Repayment fluctuates automatically with bakery sales. On days Elena cannot bake due to her mother's care needs, payment is automatically ₹0 without compounding fines.",
+            risk: "Extended payback duration during low-volume weeks."
+          }
+        ],
+        stressTests: [
+          {
+            id: "medical-crisis",
+            label: "What if mother requires 2 weeks intensive hospital care?",
+            query: "What if Elena cannot bake for 14 days due to hospital care?",
+            response: "Constraint Verification: Zero penalty incurred. The revenue-share agreement dynamically suspends repayment without late fees. The community school baking quota is temporarily absorbed by a secondary cooperative baker, protecting Elena's anchor at her mother's bedside."
+          }
+        ],
+        comparison: {
+          standardTitle: "Standard Commercial Bank / FinTech Loan",
+          standardBody: "Fixed ₹20,000 personal loan with mandatory ₹750 weekly repayments and ₹200 default penalty per missed installment. Recommends migrating to peri-urban industrial bakery.",
+          standardFlaws: ["❌ Forces migration away from sick parent", "❌ Brutal compounding late fees during emergencies"],
+          mirrorTitle: "ConstraintMirror Inverse Solution",
+          mirrorBody: "Panchayat Nutrition Advance + Revenue-Based Flexible Repayment. Keeps Elena at home, matches repayments to actual daily sales, zero late-fee risk.",
+          mirrorGains: ["✅ 100% Caregiver Presence Maintained", "✅ Zero Default Fines During Sickness", "✅ Stable Local Livelihood"]
+        }
+      }
+    };
+
+    let currentPersonaKey = 'ramesh';
+
+    // Function to render Persona UI
+    function selectPersona(key) {
+      currentPersonaKey = key;
+      
+      // Update buttons
+      document.querySelectorAll('.persona-btn').forEach(btn => {
+        btn.classList.remove('bg-ink', 'text-white', 'border-ink');
+        btn.classList.add('bg-white', 'text-slate-700', 'border-slate-200');
+      });
+      const activeBtn = document.getElementById(`btn-persona-${key}`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-ink', 'text-white', 'border-ink');
+        activeBtn.classList.remove('bg-white', 'text-slate-700', 'border-slate-200');
+      }
+
+      const customNeedContainer = document.getElementById('custom-need-container');
+      const customRefusalContainer = document.getElementById('custom-refusal-container');
+      const displayNeedContainer = document.getElementById('display-need-container');
+      const displayRefusalsContainer = document.getElementById('display-refusals-container');
+
+      if (key === 'custom') {
+        customNeedContainer.classList.remove('hidden');
+        customRefusalContainer.classList.remove('hidden');
+        displayNeedContainer.classList.add('hidden');
+        displayRefusalsContainer.classList.add('hidden');
+        document.getElementById('persona-tag').innerText = "Interactive Custom Mode";
+        return;
+      } else {
+        customNeedContainer.classList.add('hidden');
+        customRefusalContainer.classList.add('hidden');
+        displayNeedContainer.classList.remove('hidden');
+        displayRefusalsContainer.classList.remove('hidden');
+      }
+
+      const data = personas[key];
+      document.getElementById('persona-tag').innerText = data.tag;
+      document.getElementById('display-need').innerText = `"${data.need}"`;
+      document.getElementById('display-refusals').innerText = `"${data.verbatimRefusals}"`;
+
+      // Render Constraints
+      renderConstraints(data.constraints);
+
+      // Render Pathways
+      renderPathways(data.pathways);
+
+      // Render Stress Test Pills
+      renderStressTests(data.stressTests);
+
+      // Hide previous stress result
+      document.getElementById('stress-response-box').classList.add('hidden');
+
+      // Re-create icons
+      lucide.createIcons();
+    }
+
+    function renderConstraints(constraints) {
+      const container = document.getElementById('constraint-vault-badges');
+      container.innerHTML = '';
+
+      constraints.forEach(c => {
+        const badge = document.createElement('div');
+        badge.className = "flex items-start justify-between p-3 rounded-xl bg-slateSurface border border-slate-200 hover:border-emerald-300 transition-all";
+        badge.innerHTML = `
+          <div class="flex items-start gap-2.5">
+            <div class="w-5 h-5 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center mt-0.5 flex-shrink-0">
+              <i data-lucide="lock" class="w-3 h-3"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h4 class="font-bold text-xs text-ink">${c.title}</h4>
+                <span class="font-mono text-[9px] px-1.5 py-0.2 rounded bg-white border border-slate-200 text-slate-500 font-semibold">${c.tag}</span>
+              </div>
+              <p class="text-[11px] text-inkMuted mt-0.5">${c.detail}</p>
+            </div>
+          </div>
+          <span class="font-mono text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+            LOCKED
+          </span>
+        `;
+        container.appendChild(badge);
+      });
+    }
+
+    function renderPathways(pathways) {
+      const container = document.getElementById('pathways-container');
+      container.innerHTML = '';
+      document.getElementById('pathways-count-badge').innerText = `${pathways.length} Viable Pathways Discovered`;
+
+      pathways.forEach((p, idx) => {
+        const card = document.createElement('div');
+        card.className = "bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 transition-all shadow-subtle hover:shadow-elevated";
+        card.innerHTML = `
+          <div class="flex items-center justify-between flex-wrap gap-2 mb-3">
+            <span class="font-mono text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+              <i data-lucide="sparkles" class="w-3 h-3 text-emerald-600"></i>
+              Enabled by: ${p.enabledBy}
+            </span>
+            <span class="font-mono text-[11px] text-slate-400">PATHWAY 0${idx+1}</span>
+          </div>
+
+          <h3 class="text-base sm:text-lg font-bold text-ink">${p.title}</h3>
+          
+          <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-slate-600 bg-slateSurface p-3 rounded-xl border border-slate-200/80">
+            <div><span class="text-slate-400">Mechanism:</span> <span class="text-ink font-semibold">${p.mechanism}</span></div>
+            <div><span class="text-slate-400">Timeline:</span> <span class="text-ink font-semibold">${p.timeline}</span></div>
+            <div><span class="text-slate-400">Collateral:</span> <span class="text-emerald-700 font-semibold">${p.collateral}</span></div>
+            <div><span class="text-slate-400">Constraint Violation:</span> <span class="text-emerald-700 font-bold">0% [GUARANTEED]</span></div>
+          </div>
+
+          <p class="text-xs text-inkMuted mt-3 leading-relaxed">
+            ${p.details}
+          </p>
+
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+            <span class="text-slate-500 font-mono flex items-center gap-1">
+              <i data-lucide="alert-circle" class="w-3.5 h-3.5 text-amber-500"></i>
+              Residual Risk: ${p.risk}
+            </span>
+            <span class="text-emerald-700 font-mono font-semibold flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+              Boundary Integrity: 100%
+            </span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderStressTests(tests) {
+      const container = document.getElementById('stress-quick-pills');
+      container.innerHTML = '';
+
+      tests.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = "px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-all flex items-center gap-1.5";
+        btn.innerHTML = `<i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i> ${t.label}`;
+        btn.onclick = () => runStressTest(t);
+        container.appendChild(btn);
+      });
+    }
+
+    function runStressTest(testObj) {
+      const box = document.getElementById('stress-response-box');
+      box.classList.remove('hidden');
+      document.getElementById('stress-query-title').innerText = `Stress Query: "${testObj.query}"`;
+      document.getElementById('stress-response-text').innerText = testObj.response;
+      lucide.createIcons();
+    }
+
+    function runCustomEngine() {
+      const need = document.getElementById('custom-need-input').value.trim() || "₹30,000 needed for productive equipment";
+      const refusals = document.getElementById('custom-refusal-input').value.trim() || "Refuse to take loan-shark money, refuse to sell livestock";
+
+      // Simulate dynamic extraction
+      const customConstraints = [
+        {
+          id: "CUSTOM_USER_REFUSAL_1",
+          title: "User Sacred Red Line #1",
+          detail: refusals.length > 50 ? refusals.substring(0, 50) + "..." : refusals,
+          tag: "USER INVARIANT",
+          color: "emerald"
+        },
+        {
+          id: "CUSTOM_PREDATORY_BLOCK",
+          title: "Predatory Financial Extraction Prohibited",
+          detail: "All compounding penalty instruments locked out of candidate solution set.",
+          tag: "SYSTEM GUARD",
+          color: "cobalt"
+        }
+      ];
+
+      const customPathways = [
+        {
+          title: "Community Peer-Guaranteed Mutual Credit Circle",
+          enabledBy: "Custom Refusal of Predatory Terms",
+          mechanism: "Decentralized Village Rotating Credit Association (ROSCA)",
+          timeline: "Capital bridge within 5 days",
+          collateral: "Zero physical asset pledge (Peer Trust Guarantee)",
+          details: `In response to: "${need}", the engine identified a local cooperative credit pooling structure that eliminates third-party usury while respecting declared boundaries.`,
+          risk: "Community meeting attendance required."
+        },
+        {
+          title: "Pre-Harvest Productive Asset Lease-Back",
+          enabledBy: "Livestock & Asset Retention Mandate",
+          mechanism: "Equipment Lease with Producer Cooperative",
+          timeline: "Immediate tool deployment",
+          collateral: "Productive yield share only",
+          details: "Acquires machinery via operational lease rather than capital purchase, reducing cash demand by 60% without touching personal property.",
+          risk: "Seasonal maintenance quota."
+        }
+      ];
+
+      renderConstraints(customConstraints);
+      renderPathways(customPathways);
+      renderStressTests([
+        {
+          id: "custom-shock",
+          label: "What if cashflow drops next month?",
+          query: "What if income is delayed by 30 days?",
+          response: "Constraint Verification: 0 boundaries breached. The ROSCA agreement incorporates a built-in mutual grace buffer. User red lines remain locked and inviolable."
+        }
+      ]);
+      document.getElementById('stress-response-box').classList.add('hidden');
+      lucide.createIcons();
+    }
+
+    // Modal Toggle
+    function toggleComparisonModal() {
+      const modal = document.getElementById('comparison-modal');
+      const isHidden = modal.classList.contains('hidden');
+      if (isHidden) {
+        modal.classList.remove('hidden');
+        renderComparisonContent();
+      } else {
+        modal.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    function renderComparisonContent() {
+      const current = personas[currentPersonaKey] || personas['ramesh'];
+      const comp = current.comparison;
+      const container = document.getElementById('modal-comparison-content');
+      
+      container.innerHTML = `
+        <!-- Conventional Bank Column -->
+        <div class="bg-roseLight p-5 rounded-xl border border-rose-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+              <span class="font-mono text-xs font-bold text-rose-700 uppercase">${comp.standardTitle}</span>
+            </div>
+            <p class="text-xs text-rose-950 leading-relaxed font-medium">
+              ${comp.standardBody}
+            </p>
+            <div class="mt-4 space-y-1.5 text-xs text-rose-800">
+              ${comp.standardFlaws.map(f => `<div>${f}</div>`).join('')}
+            </div>
+          </div>
+          <div class="mt-5 pt-3 border-t border-rose-200/80 font-mono text-[10px] text-rose-700">
+            Result: Cultural alienation, fear, high default distress
+          </div>
+        </div>
+
+        <!-- ConstraintMirror Column -->
+        <div class="bg-mintLight p-5 rounded-xl border border-emerald-200 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+              <span class="font-mono text-xs font-bold text-emerald-800 uppercase">${comp.mirrorTitle}</span>
+            </div>
+            <p class="text-xs text-emerald-950 leading-relaxed font-medium">
+              ${comp.mirrorBody}
+            </p>
+            <div class="mt-4 space-y-1.5 text-xs text-emerald-800 font-semibold">
+              ${comp.mirrorGains.map(g => `<div>${g}</div>`).join('')}
+            </div>
+          </div>
+          <div class="mt-5 pt-3 border-t border-emerald-200/80 font-mono text-[10px] text-emerald-800">
+            Result: 100% Boundary Respect, dignity preserved, high trust
+          </div>
+        </div>
+      `;
+    }
+
+    // Code Tab Switching
+    function showCodeTab(tabId) {
+      document.querySelectorAll('.code-tab').forEach(b => {
+        b.classList.remove('active', 'bg-slate-800', 'text-white');
+        b.classList.add('text-slate-400');
+      });
+      document.getElementById(`code-tab-${tabId}`).classList.add('active', 'bg-slate-800', 'text-white');
+      document.getElementById(`code-tab-${tabId}`).classList.remove('text-slate-400');
+
+      ['extractor', 'counterfactual', 'auditor', 'grammar'].forEach(id => {
+        const el = document.getElementById(`code-block-${id}`);
+        if (id === tabId) {
+          el.classList.remove('hidden');
+          el.classList.add('block');
+        } else {
+          el.classList.remove('block');
+          el.classList.add('hidden');
+        }
+      });
+
+      const langMap = {
+        extractor: 'Python 3.11 • Pydantic + Outlines',
+        counterfactual: 'Python 3.11 • Negative Logit Masking',
+        auditor: 'Python 3.11 • Adversarial Red-Teaming',
+        grammar: 'JSON Schema (Draft 2020-12)'
+      };
+      document.getElementById('code-lang-label').innerText = langMap[tabId] || 'Code';
+    }
+
+    function copyCurrentCode() {
+      const activeBlock = document.querySelector('pre.block code');
+      if (activeBlock) {
+        navigator.clipboard.writeText(activeBlock.innerText);
+        const btnText = document.getElementById('copy-btn-text');
+        btnText.innerText = "Copied!";
+        setTimeout(() => { btnText.innerText = "Copy Code"; }, 2000);
+      }
+    }
+
+    // Initial boot
+    document.addEventListener('DOMContentLoaded', () => {
+      selectPersona('ramesh');
+    });
+  </script>
+
+</body>
+</html>

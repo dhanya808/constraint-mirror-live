@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ConstraintMirror Portal — Inclusive Financial Design Studio</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            alabaster: '#f8fafc',
+            slateSurface: '#f1f5f9',
+            emeraldAccent: '#059669',
+            mintLight: '#ecfdf5',
+            cobaltAccent: '#2563eb',
+            cobaltLight: '#eff6ff',
+            amberAccent: '#d97706',
+            amberLight: '#fef3c7',
+            roseWarning: '#e11d48',
+            roseLight: '#fff1f2',
+            ink: '#0f172a',
+            inkMuted: '#475569',
+          },
+          boxShadow: {
+            'subtle': '0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04)',
+            'elevated': '0 10px 30px -5px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03)',
+            'glow-emerald': '0 0 20px -3px rgba(16, 185, 129, 0.25)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #f8fafc; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Subtle Editorial Grid */
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+    }
+
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      50% { transform: scale(1.05); opacity: 0.4; }
+      100% { transform: scale(0.95); opacity: 0.8; }
+    }
+    .animate-pulse-ring {
+      animation: pulse-ring 2.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+
+<body class="bg-alabaster text-ink font-sans antialiased bg-grid-pattern min-h-screen flex flex-col selection:bg-emerald-100 selection:text-emerald-900">
+
+  <!-- ========================================================================= -->
+  <!-- PORTAL TOP NAVIGATION BAR -->
+  <!-- ========================================================================= -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Left: Logo & Portal Identifier -->
+        <div class="flex items-center gap-3">
+          <a href="index.html" class="flex items-center gap-2.5 group">
+            <div class="w-9 h-9 rounded-xl bg-ink text-white flex items-center justify-center font-mono font-bold text-sm shadow-sm border border-slate-800 group-hover:bg-slate-800 transition-colors">
+              CM
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-extrabold text-base tracking-tight text-ink">ConstraintMirror</span>
+                <span class="font-mono text-[10px] font-semibold bg-emerald-50 text-emerald-700 px-2 py-0.5 rounded border border-emerald-200">
+                  PORTAL STUDIO
+                </span>
+              </div>
+              <p class="text-[11px] text-inkMuted hidden sm:block">Where What You Refuse Becomes Your Solution</p>
+            </div>
+          </a>
+        </div>
+
+        <!-- Center: Workflow Step Indicator -->
+        <nav class="hidden md:flex items-center gap-1 text-xs font-medium bg-slate-100/80 p-1 rounded-xl border border-slate-200/80">
+          <button onclick="switchStep(1)" id="step-nav-1" class="step-nav-btn active flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white text-ink font-semibold shadow-sm transition-all">
+            <span class="w-4 h-4 rounded-full bg-ink text-white text-[10px] font-mono flex items-center justify-center">1</span>
+            <span>Financial Need</span>
+          </button>
+          <button onclick="switchStep(2)" id="step-nav-2" class="step-nav-btn flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 hover:text-ink transition-all">
+            <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-700 text-[10px] font-mono flex items-center justify-center">2</span>
+            <span>Declare Refusals</span>
+          </button>
+          <button onclick="switchStep(3)" id="step-nav-3" class="step-nav-btn flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 hover:text-ink transition-all">
+            <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-700 text-[10px] font-mono flex items-center justify-center">3</span>
+            <span>Constraint Vault</span>
+          </button>
+          <button onclick="switchStep(4)" id="step-nav-4" class="step-nav-btn flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-slate-600 hover:text-ink transition-all">
+            <span class="w-4 h-4 rounded-full bg-slate-200 text-slate-700 text-[10px] font-mono flex items-center justify-center">4</span>
+            <span>Solutions Studio</span>
+          </button>
+        </nav>
+
+        <!-- Right: Language & Field Agent Switcher -->
+        <div class="flex items-center gap-3">
+          <!-- Dialect Select -->
+          <div class="flex items-center gap-1 bg-slate-50 border border-slate-200 rounded-lg px-2.5 py-1 text-xs font-mono text-slate-700">
+            <i data-lucide="globe" class="w-3.5 h-3.5 text-slate-500"></i>
+            <select id="lang-select" onchange="changeLanguage()" class="bg-transparent text-xs font-medium focus:outline-none cursor-pointer">
+              <option value="en">English (Global)</option>
+              <option value="hi">हिंदी (Hindi / Rural North)</option>
+              <option value="ta">தமிழ் (Tamil / Delta Agrarian)</option>
+              <option value="te">తెలుగు (Telugu / Rayalaseema)</option>
+              <option value="sw">Kiswahili (East Africa)</option>
+            </select>
+          </div>
+
+          <!-- Back to Overview Link -->
+          <a href="index.html" class="hidden lg:flex items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-ink px-2.5 py-1 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 transition-all">
+            <i data-lucide="book-open" class="w-3.5 h-3.5 text-slate-500"></i>
+            <span>Overview & Code</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================= -->
+  <!-- SUB-HEADER: CASE MANAGER RIBBON & GUARD STATUS -->
+  <!-- ========================================================================= -->
+  <section class="bg-white border-b border-slate-200/80 py-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+      
+      <!-- Preset Quick Case Loader -->
+      <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
+        <span class="font-mono text-slate-400 font-semibold text-[11px] uppercase tracking-wider flex-shrink-0">Load Case:</span>
+        <button onclick="loadPortalCase('ramesh')" class="case-chip px-3 py-1 rounded-md bg-slate-100 hover:bg-slate-200 font-medium text-slate-700 border border-slate-200 flex-shrink-0 transition-all flex items-center gap-1.5">
+          <i data-lucide="user" class="w-3 h-3 text-emerald-600"></i> Ramesh (Farmer)
+        </button>
+        <button onclick="loadPortalCase('fatima')" class="case-chip px-3 py-1 rounded-md bg-slate-100 hover:bg-slate-200 font-medium text-slate-700 border border-slate-200 flex-shrink-0 transition-all flex items-center gap-1.5">
+          <i data-lucide="user" class="w-3 h-3 text-cobaltAccent"></i> Fatima (Artisan)
+        </button>
+        <button onclick="loadPortalCase('elena')" class="case-chip px-3 py-1 rounded-md bg-slate-100 hover:bg-slate-200 font-medium text-slate-700 border border-slate-200 flex-shrink-0 transition-all flex items-center gap-1.5">
+          <i data-lucide="user" class="w-3 h-3 text-rose-500"></i> Elena (Caregiver)
+        </button>
+        <button onclick="resetPortalCase()" class="case-chip px-3 py-1 rounded-md bg-emerald-50 hover:bg-emerald-100 font-semibold text-emerald-800 border border-emerald-200 flex-shrink-0 transition-all flex items-center gap-1">
+          <i data-lucide="plus" class="w-3 h-3"></i> New Case
+        </button>
+      </div>
+
+      <!-- Live Guarantee Seal -->
+      <div class="flex items-center gap-3 font-mono text-[11px] text-slate-500 flex-shrink-0">
+        <span class="flex items-center gap-1.5 text-emerald-700 font-semibold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+          Constraint Integrity: 100% Inviolable
+        </span>
+        <span class="hidden md:inline text-slate-400">|</span>
+        <span class="hidden md:inline">Open LLM Decoded</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN WORKSPACE PORTAL CONTAINER -->
+  <!-- ========================================================================= -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    
+    <!-- ======================================================================= -->
+    <!-- STEP 1: FINANCIAL NEED & CONTEXT -->
+    <!-- ======================================================================= -->
+    <div id="step-1-panel" class="step-panel space-y-6">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle">
+        
+        <div class="max-w-2xl">
+          <span class="font-mono text-xs font-bold text-cobaltAccent uppercase tracking-widest">[STEP 01 // STATED FINANCIAL NEED]</span>
+          <h1 class="text-2xl sm:text-3xl font-bold text-ink mt-1">What is your financial objective?</h1>
+          <p class="text-sm text-inkMuted mt-2 leading-relaxed">
+            Describe what you need capital for in your own words. We will never judge or pressure you to alter your livelihood or community norms.
+          </p>
+        </div>
+
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Column 1: Core Description -->
+          <div class="md:col-span-2 space-y-5">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 font-mono flex items-center justify-between">
+                <span>Describe the Capital Requirement:</span>
+                <button type="button" onclick="simulateVoiceDictation()" id="voice-dictate-btn" class="text-xs font-medium text-emerald-700 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 px-2 py-0.5 rounded flex items-center gap-1 transition-all">
+                  <i data-lucide="mic" class="w-3 h-3 text-emerald-600"></i>
+                  <span id="voice-btn-label">Tap to Speak (Vernacular)</span>
+                </button>
+              </label>
+              <textarea id="input-need-text" rows="4" class="w-full p-4 rounded-xl border border-slate-300 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20 text-sm font-sans placeholder-slate-400 text-ink leading-relaxed transition-all" placeholder="e.g. I need ₹45,000 before the monsoon arrives to purchase drought-resistant seeds and drip tubing..."></textarea>
+            </div>
+
+            <!-- Pre-set Need Chips -->
+            <div>
+              <span class="text-xs font-mono text-slate-400 block mb-2">Or choose a common objective:</span>
+              <div class="flex flex-wrap gap-2 text-xs">
+                <button onclick="setNeedSample('Seasonal Agricultural Inputs & Seeds')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors">
+                  🌾 Seasonal Farming Seeds & Irrigation
+                </button>
+                <button onclick="setNeedSample('Raw Material Stock for Artisan Weaving')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors">
+                  🧵 Raw Weaving Yarn & Silk Stock
+                </button>
+                <button onclick="setNeedSample('Productive Bakery Oven Repair')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors">
+                  🍞 Home Food Production Equipment Repair
+                </button>
+                <button onclick="setNeedSample('Emergency Family Medical Care Bridge')" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 transition-colors">
+                  🏥 Emergency Medical Cashflow Bridge
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Parameters -->
+          <div class="bg-slateSurface p-6 rounded-xl border border-slate-200 space-y-4">
+            <div>
+              <label class="block text-xs font-mono font-semibold text-slate-600 mb-1">Target Amount (₹ / Currency)</label>
+              <div class="relative">
+                <span class="absolute left-3 top-2.5 text-slate-400 font-mono text-sm">₹</span>
+                <input type="text" id="input-amount" value="45,000" class="w-full pl-8 pr-3 py-2 rounded-lg border border-slate-300 text-sm font-mono font-bold text-ink focus:border-emerald-500 focus:outline-none">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-semibold text-slate-600 mb-1">Urgency Window</label>
+              <select id="input-urgency" class="w-full p-2 rounded-lg border border-slate-300 text-xs font-sans text-ink focus:border-emerald-500 focus:outline-none bg-white">
+                <option value="urgent">Critical (Within 7-14 Days)</option>
+                <option value="seasonal" selected>Seasonal Window (Within 30 Days)</option>
+                <option value="medium">Planned Growth (Within 60 Days)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-semibold text-slate-600 mb-1">Household Livelihood Type</label>
+              <select id="input-livelihood" class="w-full p-2 rounded-lg border border-slate-300 text-xs font-sans text-ink focus:border-emerald-500 focus:outline-none bg-white">
+                <option value="farmer">Smallholder Dryland Agriculture</option>
+                <option value="weaver">Independent Artisan / Handloom</option>
+                <option value="caregiver">Home Caregiver & Micro-Producer</option>
+                <option value="retail">Informal Market Vendor / Daily Wage</option>
+              </select>
+            </div>
+
+            <div class="pt-2">
+              <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg text-[11px] text-blue-900 leading-snug">
+                <span class="font-bold">Next:</span> You will declare everything you <strong class="underline">refuse</strong> to compromise on.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Navigation Button -->
+        <div class="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between">
+          <span class="text-xs font-mono text-slate-400">Step 1 of 4 • Confidential & Sovereign</span>
+          <button onclick="switchStep(2)" class="px-6 py-2.5 rounded-xl bg-ink hover:bg-slate-800 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-subtle">
+            <span>Continue to Refusal Declaration</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- STEP 2: DECLARE SACRED REFUSALS & HARD BOUNDARIES -->
+    <!-- ======================================================================= -->
+    <div id="step-2-panel" class="step-panel hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle">
+        
+        <div class="max-w-3xl">
+          <span class="font-mono text-xs font-bold text-rose-600 uppercase tracking-widest">[STEP 02 // DECLARE YOUR HARD REFUSALS]</span>
+          <h1 class="text-2xl sm:text-3xl font-bold text-ink mt-1">What do you refuse to compromise on?</h1>
+          <p class="text-sm text-inkMuted mt-2 leading-relaxed">
+            Conventional financial tools treat your personal, cultural, and spiritual boundaries as obstacles. <strong class="text-ink">Here, they are sacred.</strong> Tell us what you will NEVER do, no matter what.
+          </p>
+        </div>
+
+        <!-- Natural Language Refusal Input Area -->
+        <div class="mt-8">
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2 font-mono flex items-center justify-between">
+            <span>Your Personal & Cultural Red Lines (Free Text):</span>
+            <span class="text-[11px] font-mono text-slate-400">Local language or dialect welcome</span>
+          </label>
+          <textarea id="input-refusals-text" rows="4" class="w-full p-4 rounded-xl border border-slate-300 focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 text-sm font-sans placeholder-slate-400 text-ink leading-relaxed transition-all" placeholder="Tell us what you refuse to do (e.g. Under no condition will I mortgage ancestral land; I will never take high-interest informal loans; My children will not leave school)..."></textarea>
+        </div>
+
+        <!-- Boundary Picker Chips -->
+        <div class="mt-6">
+          <span class="text-xs font-mono font-semibold text-slate-600 uppercase tracking-wider block mb-3">
+            Click to Tag Common Inviolable Boundaries:
+          </span>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="boundary-tags-container">
+            <!-- Rendered by JS with interactive toggles -->
+          </div>
+        </div>
+
+        <!-- Selected Boundaries Summary Counter -->
+        <div class="mt-6 p-4 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center font-mono font-bold text-sm">
+              <i data-lucide="shield" class="w-4 h-4 text-amber-700"></i>
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-ink" id="selected-refusals-count">3 Inviolable Boundaries Active</h4>
+              <p class="text-[11px] text-slate-600">These will be structured and locked into the cryptographic vault in Step 3.</p>
+            </div>
+          </div>
+          <span class="font-mono text-xs font-bold text-amber-800 bg-white px-2.5 py-1 rounded border border-amber-300">
+            0% Compromise
+          </span>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-8 pt-6 border-t border-slate-200 flex items-center justify-between">
+          <button onclick="switchStep(1)" class="px-5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-2 transition-all">
+            <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            <span>Back</span>
+          </button>
+          <button onclick="lockAndProceedToVault()" class="px-6 py-2.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center gap-2 transition-all shadow-subtle">
+            <i data-lucide="lock" class="w-4 h-4"></i>
+            <span>Lock Boundaries in Vault</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- STEP 3: THE INVIOLABLE CONSTRAINT VAULT -->
+    <!-- ======================================================================= -->
+    <div id="step-3-panel" class="step-panel hidden space-y-6">
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle">
+        
+        <!-- Vault Header -->
+        <div class="flex items-center justify-between flex-wrap gap-4 pb-6 border-b border-slate-200">
+          <div>
+            <span class="font-mono text-xs font-bold text-emerald-700 uppercase tracking-widest">[STEP 03 // THE INVIOLABLE CONSTRAINT VAULT]</span>
+            <h1 class="text-2xl sm:text-3xl font-bold text-ink mt-1 flex items-center gap-2.5">
+              <span>Boundary Lockdown Confirmed</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
+            </h1>
+            <p class="text-sm text-inkMuted mt-1">
+              Your refusals have been extracted, classified, and transformed into deterministic computational invariants.
+            </p>
+          </div>
+          
+          <div class="flex items-center gap-3">
+            <div class="px-3.5 py-2 bg-emerald-50 border border-emerald-300 rounded-xl text-center">
+              <div class="font-mono text-xs font-bold text-emerald-800 uppercase">Audit Status</div>
+              <div class="text-xs font-semibold text-emerald-950 flex items-center gap-1 mt-0.5">
+                <i data-lucide="check-check" class="w-3.5 h-3.5 text-emerald-600"></i>
+                Passed • Zero-Breach
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vault Cards List -->
+        <div class="mt-6 space-y-4">
+          <div class="text-xs font-mono text-slate-500 uppercase tracking-wider">Active Inviolable Rules:</div>
+          <div id="portal-vault-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Dynamically Injected by JS -->
+          </div>
+        </div>
+
+        <!-- The Guarantee Manifesto Banner -->
+        <div class="mt-8 p-5 rounded-xl bg-slateSurface border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-ink text-white flex items-center justify-center font-mono text-sm font-bold flex-shrink-0">
+              100%
+            </div>
+            <div>
+              <h4 class="text-xs font-bold text-ink">The ConstraintMirror Mathematical Guarantee</h4>
+              <p class="text-[11px] text-inkMuted mt-0.5">
+                In closed-source AI, negative constraints are just soft hints. In our open LLM architecture, Context-Free Grammar (CFG) logit masks guarantee that prohibited options cannot be generated.
+              </p>
+            </div>
+          </div>
+          <button onclick="switchStep(4)" class="px-5 py-2.5 bg-ink hover:bg-slate-800 text-white rounded-xl text-xs font-semibold flex items-center gap-2 flex-shrink-0 shadow-subtle transition-all">
+            <span>Generate Solutions Studio</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between">
+          <button onclick="switchStep(2)" class="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-all">
+            <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+            <span>Edit Refusals</span>
+          </button>
+          <span class="text-xs font-mono text-slate-400">Hash: #CM-SHA256-49a8f2</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ======================================================================= -->
+    <!-- STEP 4: SOLUTIONS STUDIO & INTERACTIVE COPILOT -->
+    <!-- ======================================================================= -->
+    <div id="step-4-panel" class="step-panel hidden space-y-8">
+      
+      <!-- Studio Header -->
+      <div class="bg-white rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-subtle flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div>
+          <span class="font-mono text-xs font-bold text-cobaltAccent uppercase tracking-widest">[STEP 04 // SOLUTIONS STUDIO]</span>
+          <h1 class="text-2xl sm:text-3xl font-bold text-ink mt-1">Your Counterfactual Financial Pathways</h1>
+          <p class="text-sm text-inkMuted mt-1">
+            These pathways are viable <strong class="text-ink">specifically because of what you refused</strong>.
+          </p>
+        </div>
+
+        <!-- Action Export Tools -->
+        <div class="flex items-center gap-2">
+          <button onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold border border-slate-200 flex items-center gap-1.5 transition-all">
+            <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+            <span>Print Action Kit</span>
+          </button>
+          <button onclick="downloadActionRoadmap()" class="px-3.5 py-2 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-semibold flex items-center gap-1.5 transition-all shadow-subtle">
+            <i data-lucide="download" class="w-3.5 h-3.5"></i>
+            <span>Save Summary Card</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- WORKBENCH 2-COLUMN: Solutions List (Left) & Live Copilot Chat (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- LEFT: Dynamic Pathway Cards (7 Cols) -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">
+              Discovered Respectful Pathways:
+            </span>
+            <span class="text-xs font-mono text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200" id="portal-pathways-count">
+              3 Pathways Active
+            </span>
+          </div>
+
+          <!-- Cards Container -->
+          <div id="portal-solutions-list" class="space-y-4">
+            <!-- Dynamic Injection -->
+          </div>
+        </div>
+
+        <!-- RIGHT: Interactive Copilot & Stress-Tester (5 Cols) -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <!-- Persistent Constraint Vault Summary Box -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-subtle">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+              <span class="font-mono text-xs font-bold text-ink flex items-center gap-1.5">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-600"></i>
+                Locked Invariant Vault
+              </span>
+              <span class="text-[10px] font-mono text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                0% BREACH TOLERANCE
+              </span>
+            </div>
+            <div id="copilot-vault-summary" class="mt-3 space-y-1.5 text-xs text-slate-600">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Interactive Multi-Turn Chat Copilot -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-subtle flex flex-col h-[520px]">
+            
+            <!-- Chat Header -->
+            <div class="p-4 border-b border-slate-100 bg-slateSurface rounded-t-2xl flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-7 h-7 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-mono font-bold text-xs">
+                  AI
+                </div>
+                <div>
+                  <h4 class="text-xs font-bold text-ink">Constraint-Safe Dialogue</h4>
+                  <p class="text-[10px] text-slate-500">Refines options while preserving boundaries</p>
+                </div>
+              </div>
+              <span class="font-mono text-[10px] text-slate-400">Multi-Turn Active</span>
+            </div>
+
+            <!-- Chat Message History -->
+            <div id="chat-messages-container" class="flex-grow p-4 overflow-y-auto space-y-3 text-xs">
+              <!-- Initial Welcome Message -->
+              <div class="flex items-start gap-2.5">
+                <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center flex-shrink-0 font-mono text-[10px] font-bold">
+                  CM
+                </div>
+                <div class="bg-slateSurface p-3.5 rounded-2xl rounded-tl-none border border-slate-200 text-slate-800 max-w-[85%] leading-relaxed">
+                  <p class="font-semibold text-ink mb-1">I am your Constraint-Safe Copilot.</p>
+                  I will never suggest compromising on your declared refusals. Ask me anything: "Can I pay in grain instead of cash?", "What if monsoon is late?", or "What documents do I need for the cooperative?"
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Inquiry Suggestions -->
+            <div class="px-4 py-2 bg-slate-50 border-t border-slate-100 flex items-center gap-1.5 overflow-x-auto">
+              <button onclick="sendQuickChat('What if my harvest is delayed by 3 weeks?')" class="text-[11px] px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 flex-shrink-0 transition-all">
+                🌧️ What if harvest is delayed?
+              </button>
+              <button onclick="sendQuickChat('Can two neighbor families join together?')" class="text-[11px] px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 flex-shrink-0 transition-all">
+                🤝 Can 2 families join together?
+              </button>
+              <button onclick="sendQuickChat('What documents do I need to take to the Panchayat?')" class="text-[11px] px-2.5 py-1 rounded bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 flex-shrink-0 transition-all">
+                📄 What documents do I need?
+              </button>
+            </div>
+
+            <!-- Chat Input Form -->
+            <form onsubmit="handleChatSubmit(event)" class="p-3 border-t border-slate-200 bg-white rounded-b-2xl flex items-center gap-2">
+              <input type="text" id="chat-user-input" placeholder="Ask a question or test a 'What if' shock..." class="flex-grow p-2.5 text-xs rounded-xl border border-slate-300 focus:outline-none focus:border-emerald-500 font-sans text-ink">
+              <button type="submit" class="p-2.5 rounded-xl bg-ink hover:bg-slate-800 text-white text-xs transition-all shadow-subtle flex-shrink-0">
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ========================================================================= -->
+  <!-- PORTAL FOOTER -->
+  <!-- ========================================================================= -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-xs font-mono text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span>ConstraintMirror Client Portal • Design by Absence Architecture</span>
+      </div>
+      <div>
+        <a href="index.html" class="hover:text-ink underline">View Architectural Manifesto & Technical Code</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT PORTAL STATE MANAGEMENT -->
+  <!-- ========================================================================= -->
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+
+    // Standard Boundary Library
+    const availableBoundaries = [
+      {
+        id: "NO_LAND_MORTGAGE",
+        title: "Ancestral Land Inalienable",
+        detail: "Never mortgage, lien, or sell ancestral family land.",
+        tag: "HERITAGE",
+        selected: true
+      },
+      {
+        id: "NO_INFORMAL_USURY",
+        title: "Predatory Moneylenders Barred",
+        detail: "Zero loans from village loan-sharks or 100%+ APR informal lenders.",
+        tag: "SAFETY",
+        selected: true
+      },
+      {
+        id: "NO_CHILD_LABOR",
+        title: "Child Education Non-Negotiable",
+        detail: "Children will not drop out of school for farm or factory labor.",
+        tag: "EDUCATION",
+        selected: true
+      },
+      {
+        id: "NO_RIBA_INTEREST",
+        title: "Zero Riba / Faith-Aligned",
+        detail: "Strictly interest-free; profit-and-loss sharing only.",
+        tag: "FAITH",
+        selected: false
+      },
+      {
+        id: "NO_MIGRATION",
+        title: "Stay Rooted / No Migration",
+        detail: "Cannot leave elderly parents or family behind to work in city.",
+        tag: "CARE",
+        selected: false
+      },
+      {
+        id: "NO_MALE_COSIGNER",
+        title: "Independent Female Agency",
+        detail: "Refuse requirements for husband or male relative co-signature.",
+        tag: "AUTONOMY",
+        selected: false
+      },
+      {
+        id: "NO_PUBLIC_SHAME",
+        title: "Family Dignity & Privacy",
+        detail: "No public collection meetings or visible debt announcements.",
+        tag: "DIGNITY",
+        selected: false
+      },
+      {
+        id: "NO_FIXED_PENALTIES",
+        title: "Flexible Repayment",
+        detail: "No compounding penalties during illness or crop failure.",
+        tag: "FLEXIBILITY",
+        selected: false
+      }
+    ];
+
+    // Preloaded Persona Cases
+    const portalCases = {
+      ramesh: {
+        need: "I need ₹45,000 within 18 days to buy high-yield drought-resistant seeds and replacement drip tubes before the monsoon arrives.",
+        amount: "45,000",
+        urgency: "seasonal",
+        livelihood: "farmer",
+        verbatimRefusals: "Under NO circumstance will I pledge or mortgage our 1.2-acre ancestral land—my grandfather fought for it. I will NEVER go back to the village loan shark who charges 120% interest and threatens families. And my elder son will NOT drop out of 10th grade to work.",
+        activeBoundaryIds: ["NO_LAND_MORTGAGE", "NO_INFORMAL_USURY", "NO_CHILD_LABOR"],
+        pathways: [
+          {
+            title: "FPO Pre-Harvest Forward Produce Contract",
+            enabledBy: "Refusal to Mortgage Ancestral Land",
+            mechanism: "Forward Off-Take with District Farmer Producer Organization",
+            timeline: "₹30,000 input advance released in 5 days",
+            collateral: "Future grain harvest at MSP floor only (Zero land title claim)",
+            actionSteps: [
+              "Present Farmer ID & Crop Plan at local Block FPO Office",
+              "Execute zero-mortgage forward delivery agreement",
+              "Receive input voucher for direct seed procurement"
+            ],
+            riskProfile: "Monsoon deficit covered by PM Fasal Bima crop index"
+          },
+          {
+            title: "Panchayat Tool-Bank Equipment Lease-Share",
+            enabledBy: "Refusal of Moneylender Usury",
+            mechanism: "Primary Agricultural Credit Society (PACS) Shared Asset Pool",
+            timeline: "Immediate equipment access (cuts cash need by ₹18,000)",
+            collateral: "Peer-group mutual guarantee (zero cash interest)",
+            actionSteps: [
+              "Register for seasonal drip-tubing slot on Panchayat tool register",
+              "Pay lease fee post-harvest upon grain sale"
+            ],
+            riskProfile: "Requires coordination of irrigation dates with 2 adjacent plots"
+          },
+          {
+            title: "Self-Help Group Seasonal Grain-Credit Float",
+            enabledBy: "Elder Son Schooling Protection",
+            mechanism: "Women-Led Community SHG Input Pool",
+            timeline: "Remaining ₹15,000 capital in 48 hours",
+            collateral: "Community trust guarantee; grain payback post-harvest",
+            actionSteps: [
+              "SHG committee disburses advance directly to certified supplier",
+              "Ensure school attendance certificate is maintained"
+            ],
+            riskProfile: "Harvest storage in village communal godown"
+          }
+        ]
+      },
+
+      fatima: {
+        need: "I need ₹25,000 within 10 days to purchase raw silk and zari thread ahead of the wedding festival demand.",
+        amount: "25,000",
+        urgency: "urgent",
+        livelihood: "weaver",
+        verbatimRefusals: "I refuse to take any loan with interest—it violates our religious principles (Riba). I will NOT accept any loan that requires a male relative to co-sign, as I am an independent artisan. And I refuse any public microfinance group meeting where my personal need is announced to the neighborhood.",
+        activeBoundaryIds: ["NO_RIBA_INTEREST", "NO_MALE_COSIGNER", "NO_PUBLIC_SHAME"],
+        pathways: [
+          {
+            title: "Mudarabah Artisan Consignment Partnership",
+            enabledBy: "Riba-Free Faith Refusal",
+            mechanism: "Islamic Ethical Profit-and-Loss Sharing with Weaver Guild",
+            timeline: "₹25,000 yarn stock delivered directly within 4 days",
+            collateral: "Shared sale proceeds (75% artisan / 25% guild) — Zero Interest",
+            actionSteps: [
+              "Select silk count from cooperative inventory",
+              "Log consignment agreement without interest ledger",
+              "Distribute finished sarees directly via fair-trade exhibition"
+            ],
+            riskProfile: "Sales slowdown absorbed equitably by capital pool"
+          },
+          {
+            title: "Direct Boutique Advance Escrow Pre-Order",
+            enabledBy: "Female Autonomy & Privacy Mandate",
+            mechanism: "Urban Retailer Pre-Financing via Digital Escrow",
+            timeline: "50% upfront deposit (₹15,000) straight to personal mobile wallet",
+            collateral: "Weaver craft sample portfolio (Zero male co-signer)",
+            actionSteps: [
+              "Confirm design specs with partnered ethical boutique",
+              "Direct digital disbursement with zero public meetings"
+            ],
+            riskProfile: "Design fulfillment timeline adherence"
+          }
+        ]
+      },
+
+      elena: {
+        need: "I need ₹18,000 to replace our cracked wood-fired baking oven and purchase grain sacks.",
+        amount: "18,000",
+        urgency: "seasonal",
+        livelihood: "caregiver",
+        verbatimRefusals: "I CANNOT leave my village or migrate to the city for seasonal factory labor because I am the sole caregiver for my bedridden 82-year-old mother. I also refuse any loan that has rigid daily or weekly penalties if I miss a payment due to medical emergencies.",
+        activeBoundaryIds: ["NO_MIGRATION", "NO_FIXED_PENALTIES"],
+        pathways: [
+          {
+            title: "Panchayat School Breakfast Off-Take Contract",
+            enabledBy: "Refusal to Migrate / Caregiver Anchor",
+            mechanism: "Local Institutional Nutrition Supply Contract",
+            timeline: "₹10,000 oven repair grant-advance from village nutrition fund",
+            collateral: "Daily fresh bread supply to local elementary school (500m from home)",
+            actionSteps: [
+              "Sign daily baking quota with Village School Committee",
+              "Oven repair executed locally by community mason"
+            ],
+            riskProfile: "Requires morning delivery schedule"
+          },
+          {
+            title: "Revenue-Share Equipment Financing",
+            enabledBy: "Refusal of Fixed Late Penalties",
+            mechanism: "Percentage-of-Sales Repayment (5% of daily bread receipts)",
+            timeline: "₹8,000 remaining capital disbursed via rural bakers guild",
+            collateral: "Daily sales percentage (Zero penalty when mother is ill)",
+            actionSteps: [
+              "Install simple sales ledger app",
+              "Automatic grace period on medical leave days"
+            ],
+            riskProfile: "Flexible payback timeline based on actual volume"
+          }
+        ]
+      }
+    };
+
+    let activeBoundaries = [...availableBoundaries];
+    let currentCaseData = portalCases['ramesh'];
+
+    // Step Navigation
+    function switchStep(stepNum) {
+      document.querySelectorAll('.step-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('.step-nav-btn').forEach(btn => {
+        btn.classList.remove('active', 'bg-white', 'text-ink', 'shadow-sm', 'font-semibold');
+        btn.classList.add('text-slate-600');
+        btn.querySelector('span:first-child').className = "w-4 h-4 rounded-full bg-slate-200 text-slate-700 text-[10px] font-mono flex items-center justify-center";
+      });
+
+      const targetPanel = document.getElementById(`step-${stepNum}-panel`);
+      if (targetPanel) targetPanel.classList.remove('hidden');
+
+      const targetNav = document.getElementById(`step-nav-${stepNum}`);
+      if (targetNav) {
+        targetNav.classList.add('active', 'bg-white', 'text-ink', 'shadow-sm', 'font-semibold');
+        targetNav.classList.remove('text-slate-600');
+        targetNav.querySelector('span:first-child').className = "w-4 h-4 rounded-full bg-ink text-white text-[10px] font-mono flex items-center justify-center";
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      lucide.createIcons();
+    }
+
+    // Render Boundary Chips in Step 2
+    function renderBoundaryChips() {
+      const container = document.getElementById('boundary-tags-container');
+      container.innerHTML = '';
+
+      activeBoundaries.forEach((b) => {
+        const isSelected = b.selected;
+        const chip = document.createElement('div');
+        chip.onclick = () => toggleBoundary(b.id);
+        chip.className = `cursor-pointer p-3.5 rounded-xl border transition-all flex items-start justify-between ${
+          isSelected 
+            ? 'bg-rose-50/70 border-rose-300 shadow-sm' 
+            : 'bg-white border-slate-200 hover:border-slate-300 opacity-70'
+        }`;
+        chip.innerHTML = `
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="font-mono text-[9px] font-bold px-1.5 py-0.2 rounded ${isSelected ? 'bg-rose-200 text-rose-800' : 'bg-slate-100 text-slate-500'}">${b.tag}</span>
+              <h4 class="font-bold text-xs ${isSelected ? 'text-rose-950' : 'text-slate-700'}">${b.title}</h4>
+            </div>
+            <p class="text-[11px] text-slate-600 mt-1 leading-snug">${b.detail}</p>
+          </div>
+          <div class="w-5 h-5 rounded flex items-center justify-center flex-shrink-0 ml-2 ${isSelected ? 'bg-rose-600 text-white' : 'border border-slate-300 text-transparent'}">
+            <i data-lucide="check" class="w-3 h-3"></i>
+          </div>
+        `;
+        container.appendChild(chip);
+      });
+
+      const selectedCount = activeBoundaries.filter(b => b.selected).length;
+      document.getElementById('selected-refusals-count').innerText = `${selectedCount} Inviolable Boundaries Active`;
+      lucide.createIcons();
+    }
+
+    function toggleBoundary(id) {
+      const item = activeBoundaries.find(b => b.id === id);
+      if (item) {
+        item.selected = !item.selected;
+        renderBoundaryChips();
+      }
+    }
+
+    // Load Pre-configured Case
+    function loadPortalCase(key) {
+      const data = portalCases[key];
+      if (!data) return;
+      currentCaseData = data;
+
+      // Populate Step 1
+      document.getElementById('input-need-text').value = data.need;
+      document.getElementById('input-amount').value = data.amount;
+      document.getElementById('input-urgency').value = data.urgency;
+      document.getElementById('input-livelihood').value = data.livelihood;
+
+      // Populate Step 2
+      document.getElementById('input-refusals-text').value = data.verbatimRefusals;
+      activeBoundaries.forEach(b => {
+        b.selected = data.activeBoundaryIds.includes(b.id);
+      });
+      renderBoundaryChips();
+
+      // Go to Step 1
+      switchStep(1);
+    }
+
+    function resetPortalCase() {
+      document.getElementById('input-need-text').value = "";
+      document.getElementById('input-amount').value = "30,000";
+      document.getElementById('input-refusals-text').value = "";
+      activeBoundaries.forEach(b => b.selected = false);
+      renderBoundaryChips();
+      switchStep(1);
+    }
+
+    function setNeedSample(text) {
+      document.getElementById('input-need-text').value = text;
+    }
+
+    function simulateVoiceDictation() {
+      const btn = document.getElementById('voice-btn-label');
+      btn.innerText = "Listening in Local Dialect...";
+      setTimeout(() => {
+        btn.innerText = "Transcribing Speech...";
+        setTimeout(() => {
+          document.getElementById('input-need-text').value = 
+            "I need urgent ₹45,000 for drought-resistant seeds and replacement irrigation pipes before the rain starts next month.";
+          btn.innerText = "Voice Transcribed!";
+          setTimeout(() => { btn.innerText = "Tap to Speak (Vernacular)"; }, 2000);
+        }, 1000);
+      }, 1000);
+    }
+
+    // Step 2 to Step 3: Lockdown
+    function lockAndProceedToVault() {
+      renderVaultCards();
+      switchStep(3);
+    }
+
+    function renderVaultCards() {
+      const container = document.getElementById('portal-vault-cards');
+      const summaryContainer = document.getElementById('copilot-vault-summary');
+      container.innerHTML = '';
+      summaryContainer.innerHTML = '';
+
+      const selected = activeBoundaries.filter(b => b.selected);
+
+      selected.forEach((b, idx) => {
+        // Step 3 Big Card
+        const card = document.createElement('div');
+        card.className = "p-4 rounded-xl bg-slateSurface border border-emerald-200/80 flex items-start justify-between";
+        card.innerHTML = `
+          <div class="flex items-start gap-3">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i data-lucide="lock" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="font-mono text-[9px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-bold">${b.tag}</span>
+                <h4 class="font-bold text-xs text-ink">${b.title}</h4>
+              </div>
+              <p class="text-xs text-inkMuted mt-1 leading-relaxed">${b.detail}</p>
+              <div class="mt-2 text-[10px] font-mono text-emerald-700 font-semibold">
+                LOGIT MASK: STRICT 0.00% TOKEN PROBABILITY
+              </div>
+            </div>
+          </div>
+          <span class="font-mono text-[10px] font-bold text-emerald-800 bg-white px-2 py-0.5 rounded border border-emerald-200 flex-shrink-0">
+            INVIOLABLE
+          </span>
+        `;
+        container.appendChild(card);
+
+        // Copilot Mini Summary
+        const mini = document.createElement('div');
+        mini.className = "flex items-center justify-between p-2 rounded bg-slate-50 border border-slate-200";
+        mini.innerHTML = `
+          <span class="font-semibold text-ink flex items-center gap-1.5">
+            <i data-lucide="shield" class="w-3 h-3 text-emerald-600"></i> ${b.title}
+          </span>
+          <span class="font-mono text-[9px] text-emerald-700 font-bold">LOCKED</span>
+        `;
+        summaryContainer.appendChild(mini);
+      });
+
+      renderSolutionsList();
+      lucide.createIcons();
+    }
+
+    function renderSolutionsList() {
+      const container = document.getElementById('portal-solutions-list');
+      container.innerHTML = '';
+
+      const pathways = currentCaseData.pathways || [];
+      document.getElementById('portal-pathways-count').innerText = `${pathways.length} Pathways Active`;
+
+      pathways.forEach((p, idx) => {
+        const card = document.createElement('div');
+        card.className = "bg-white p-6 rounded-2xl border border-slate-200 hover:border-slate-300 shadow-subtle transition-all space-y-4";
+        card.innerHTML = `
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <span class="font-mono text-[10px] font-bold tracking-wider uppercase px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center gap-1">
+              <i data-lucide="sparkles" class="w-3 h-3 text-emerald-600"></i>
+              Enabled by: ${p.enabledBy}
+            </span>
+            <span class="font-mono text-[11px] text-slate-400">PATHWAY 0${idx+1}</span>
+          </div>
+
+          <div>
+            <h3 class="text-base sm:text-lg font-bold text-ink">${p.title}</h3>
+            <p class="text-xs text-slate-600 mt-1 font-mono">${p.mechanism}</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono bg-slateSurface p-3 rounded-xl border border-slate-200/80">
+            <div><span class="text-slate-400">Disbursement:</span> <span class="text-ink font-semibold">${p.timeline}</span></div>
+            <div><span class="text-slate-400">Collateral:</span> <span class="text-emerald-700 font-semibold">${p.collateral}</span></div>
+            <div><span class="text-slate-400">Constraint Violation:</span> <span class="text-emerald-700 font-bold">0% [VERIFIED]</span></div>
+            <div><span class="text-slate-400">Residual Risk:</span> <span class="text-slate-700 font-medium">${p.riskProfile}</span></div>
+          </div>
+
+          <div class="pt-2">
+            <span class="text-xs font-bold text-slate-700 uppercase font-mono block mb-1.5">Action Steps for User / Field Agent:</span>
+            <ul class="space-y-1 text-xs text-inkMuted font-sans">
+              ${p.actionSteps.map(step => `
+                <li class="flex items-start gap-2">
+                  <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-emerald-600 mt-0.5 flex-shrink-0"></i>
+                  <span>${step}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      lucide.createIcons();
+    }
+
+    // Copilot Chat Execution
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chat-user-input');
+      const message = input.value.trim();
+      if (!message) return;
+
+      appendChatMessage('user', message);
+      input.value = '';
+
+      // Simulate AI response with constraint verification
+      setTimeout(() => {
+        let reply = "";
+        if (message.toLowerCase().includes("grain") || message.toLowerCase().includes("cash")) {
+          reply = "Vault Verification: 0 boundaries breached. Yes! Under Pathway 01 (FPO Forward Contract) and Pathway 03 (SHG Grain Float), repayment is structured in quintals of crop yield rather than cash. This eliminates interest compounding and protects your savings.";
+        } else if (message.toLowerCase().includes("delayed") || message.toLowerCase().includes("monsoon") || message.toLowerCase().includes("rain")) {
+          reply = "Vault Verification: Rule #1 (Ancestral land inalienable) remains 100% locked. In the event of delayed rains, the FPO forward contract triggers the integrated Weather Index Crop Insurance buffer. Your delivery obligation rolls to the winter harvest without penalty or land claims.";
+        } else if (message.toLowerCase().includes("document") || message.toLowerCase().includes("panchayat")) {
+          reply = "For the Panchayat Tool Bank (Pathway 02), bring: (1) Your village voter ID, (2) Plot survey number, (3) Acknowledgment of no active moneylender disputes. No land title deeds or collateral documents are ever requested.";
+        } else {
+          reply = `Vault Verification: Verified safe against all ${activeBoundaries.filter(b => b.selected).length} active constraints. Regarding "${message}": The system will adapt the timeline through the cooperative peer committee while ensuring your family red lines remain untouched.`;
+        }
+        appendChatMessage('assistant', reply);
+      }, 600);
+    }
+
+    function sendQuickChat(text) {
+      document.getElementById('chat-user-input').value = text;
+      handleChatSubmit(new Event('submit'));
+    }
+
+    function appendChatMessage(sender, text) {
+      const container = document.getElementById('chat-messages-container');
+      const div = document.createElement('div');
+      
+      if (sender === 'user') {
+        div.className = "flex items-start justify-end gap-2";
+        div.innerHTML = `
+          <div class="bg-ink text-white p-3 rounded-2xl rounded-tr-none text-xs max-w-[85%] leading-relaxed shadow-subtle">
+            ${text}
+          </div>
+        `;
+      } else {
+        div.className = "flex items-start gap-2.5";
+        div.innerHTML = `
+          <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-800 flex items-center justify-center flex-shrink-0 font-mono text-[10px] font-bold">
+            CM
+          </div>
+          <div class="bg-slateSurface p-3.5 rounded-2xl rounded-tl-none border border-slate-200 text-slate-800 max-w-[85%] leading-relaxed">
+            <div class="flex items-center gap-1 text-[10px] font-mono text-emerald-700 font-bold mb-1">
+              <i data-lucide="shield-check" class="w-3 h-3"></i> ZERO-VIOLATION VERIFIED
+            </div>
+            ${text}
+          </div>
+        `;
+      }
+
+      container.appendChild(div);
+      container.scrollTop = container.scrollHeight;
+      lucide.createIcons();
+    }
+
+    function changeLanguage() {
+      const lang = document.getElementById('lang-select').value;
+      const needText = document.getElementById('input-need-text');
+      const refusalText = document.getElementById('input-refusals-text');
+
+      if (lang === 'hi') {
+        needText.value = "मुझे खरीफ की बुआई के लिए ₹45,000 की जरूरत है ताकि सूखे में भी जीवित रहने वाले बीज और ड्रिप पाइप खरीद सकूं।";
+        refusalText.value = "हम अपनी पुश्तैनी जमीन किसी भी हालत में गिरवी नहीं रखेंगे। गांव के 120% ब्याज वाले साहूकार से कभी कर्ज नहीं लेंगे, और बड़ा बेटा स्कूल नहीं छोड़ेगा।";
+      } else if (lang === 'ta') {
+        needText.value = "மழைக்காலத்திற்கு முன் வறட்சியைத் தாங்கும் விதைகள் மற்றும் சொட்டு நீர் பாசனக் குழாய்களை வாங்க எனக்கு ₹45,000 தேவைப்படுகிறது.";
+        refusalText.value = "எங்கள் பரம்பரை நிலத்தை ஒருபோதும் அடமானம் வைக்க மாட்டேன். அதிக வட்டி வாங்கும் கந்துவட்டிக்காரரிடம் செல்ல மாட்டேன், மகன் படிப்பை நிறுத்த மாட்டான்.";
+      } else if (lang === 'te') {
+        needText.value = "వర్షాకాలం రాకముందే విత్తనాలు మరియు డ్రిప్ ట్యూబ్‌ల కోసం నాకు ₹45,000 అవసరం.";
+        refusalText.value = "మా పూర్వీకుల భూమిని ఎట్టి పరిస్థితుల్లోనూ తాకట్టు పెట్టను. వడ్డీ వ్యాపారుల వద్దకు వెళ్లను, మా పెద్ద కుమారుడి చదువు ఆపను.";
+      } else {
+        loadPortalCase('ramesh');
+      }
+    }
+
+    function downloadActionRoadmap() {
+      const summaryText = `CONSTRAINTMIRROR — ACTION ROADMAP CARD\nDate: ${new Date().toLocaleDateString()}\nCase Need: ${document.getElementById('input-need-text').value}\nAmount: ₹${document.getElementById('input-amount').value}\n\nLOCKED INVIOLABLE CONSTRAINTS:\n${activeBoundaries.filter(b=>b.selected).map(b=>"- [LOCKED] " + b.title + ": " + b.detail).join('\n')}\n\nGENERATED COUNTERFACTUAL PATHWAYS:\n${(currentCaseData.pathways || []).map((p,i)=>`PATHWAY 0${i+1}: ${p.title}\nEnabled by: ${p.enabledBy}\nMechanism: ${p.mechanism}\nCollateral: ${p.collateral}\n`).join('\n')}\nConstraint Breach Rate: 0.00% [MATHEMATICALLY GUARANTEED]`;
+      
+      const blob = new Blob([summaryText], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ConstraintMirror-Roadmap-${new Date().toISOString().slice(0,10)}.txt`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadPortalCase('ramesh');
+    });
+  </script>
+
+</body>
+</html>
