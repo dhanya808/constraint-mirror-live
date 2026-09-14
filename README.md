@@ -9,7 +9,7 @@
 ### 🌐 Live Links
 * **[🚀 Launch Client Portal Studio](https://constraint-mirror-live.vercel.app/portal)** — Working 4-step interactive app with dialect voice simulation & Copilot
 * **[📊 Launch 5-Pillar Project Showcase](https://constraint-mirror-live.vercel.app)** — Executive pitch, side-by-side contrast engine & code inspector
-* **[💻 GitHub Source Code](https://github.com/dhanya808/constraint-mirror)**
+* **[💻 GitHub Source Code](https://github.com/dhanya808/constraint-mirror-live)**
 
 ---
 
